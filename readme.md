@@ -2,4 +2,4 @@
 
 Nume echipa: _magic duo_
 
-Componenta echipa: Apostol Iustina & Onofrei Maria (2A2)
+Componenta echipa: __Apostol Iustina & Onofrei Maria__ (2A2)
