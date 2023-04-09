@@ -1,0 +1,46 @@
+.pageContent_specialSection_dreapta{
+    position: absolute;
+    height: 630px;
+    left: 5%;
+    right: 0%;
+    float: left;
+}
+.pageContent_specialSection_dreapta .dreptunghi_rosu{
+    position: absolute;
+    background-color: #BE123C;
+    right: 0%;
+    height: 100%;
+    width: 40%;
+}
+.pageContent_specialSection_dreapta .imgMare{
+    position: absolute;
+    overflow: hidden;
+    top: 10%;
+    right: 10%;
+    height: 80%;
+    width: 60%;
+    cursor: pointer;
+}
+.pageContent_specialSection_dreapta .textBox{
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    right: 71%;
+    height: 80%;
+    text-align: right;
+}
+.pageContent_specialSection_dreapta .textBox .title{
+    top: 12%;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 31px;
+    color: #BE123C;
+    cursor: pointer;
+}
+.pageContent_specialSection_dreapta .textBox .text{
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 42px;
+    color: black;
+    cursor: pointer;
+}

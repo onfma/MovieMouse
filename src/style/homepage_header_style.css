@@ -1,0 +1,74 @@
+.headerTextBox{
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 16px;
+    position: absolute;
+    width: 50%;
+    height: 300px;
+    left: 98px;
+    top: 35%;
+  }
+  .headerTextBox .title{
+    color: #FFF2EE;
+    font-size: 5vw;
+    font-weight: bold;
+    line-height: 56px;
+  }
+
+  
+  .headerTextBox .text{
+    color: #FFF2EE;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    width: 70%;
+  }
+  
+  @media screen and (max-width: 767px) {
+    .headerTextBox .text {
+      display: none;
+    }
+    .headerTextBox .title{
+      display: none;
+    }
+    .seeAwardsButtonWhole{
+      display: none;
+    }
+  }
+
+  .headerTextBox .seeAwardsButton{
+    cursor: pointer;
+    background-color: #BE123C;
+    color:#FFF2EE;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 16px;
+    width: 147px;
+    height: 36px;
+
+    gap: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .seeAwardsButton .buttonInButton{
+    width: 20px; 
+    height: 20px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+  .seeAwardsButton .textButton{
+    width: 87px;
+    height: 24px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+  }

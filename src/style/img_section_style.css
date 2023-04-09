@@ -1,0 +1,123 @@
+figure {
+    margin: 0;
+    padding: 5px;
+  }
+  
+  .image_column img {
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+
+.image_column {
+    float: left;
+    width: 25%;
+  }
+  
+  .image_row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+
+  .image_caption_title{
+        
+    padding-top: 6px;
+    padding-right: 6px;
+    padding-bottom: 6px;
+    padding-left: 0;
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 23px;
+    color: #BE123C;
+
+
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+  }
+  .image_caption_text{
+    padding-top: 6px;
+    padding-right: 6px;
+    padding-bottom: 6px;
+    padding-left: 0;
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    
+    color: #9CA3AF;
+    
+    flex: none;
+    order: 4;
+    align-self: stretch;
+    flex-grow: 0;
+  }
+  .image_caption_date{
+    padding-top: 6px;
+    padding-right: 6px;
+    padding-bottom: 6px;
+    padding-left: 0;
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    color: #9CA3AF;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+  }
+
+
+.pageSection{
+
+  height: 50vw;
+}
+
+@media screen and (max-width: 767px) {
+  .pageSection{
+    height: 60vw;
+}
+.pageSection .header{
+  height: 43vw;
+}
+}
+.pageContent_imgSection{
+    position: absolute;
+    left: 5%;
+    right: 5%;
+    float: left;
+}
+.pageContent_imgSection .title_imgSection{
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20%;
+}
+.pageContent_imgSection .title_imgSection .title{
+    color:black;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 62px;
+    order: 0;
+    flex-grow: 0;
+}
+.pageContent_imgSection .title_imgSection .seeMoreContainer{
+    order: 1;
+    flex-grow: 0;
+    cursor: pointer;
+}
+.seeMoreContainer .text{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color:  #BE123C;
+}
+

@@ -1,0 +1,64 @@
+.pageContent_specialSection_stanga{
+    position: absolute;
+    overflow: visible;
+    height: 630px;
+    left: 0%;
+    right: 5%;
+    float: left;
+    
+}
+.pageContent_specialSection_stanga .dreptunghi_rosu{
+    position: absolute;
+    background-color: #BE123C;
+    left: 0%;
+    height: 100%;
+    width: 40%;
+}
+.pageContent_specialSection_stanga .imgMare{
+    position: absolute;
+    overflow: hidden;
+    top: 10%;
+    left: 10%;
+    height: 80%;
+    width: 60%;
+    cursor: pointer;
+}
+.pageContent_specialSection_stanga .textBox{
+    position: absolute;
+    top: 10%;
+    left: 71%;
+    right: 5%;
+    height: 80%;
+    text-align: left;
+}
+.pageContent_specialSection_stanga .textBox .text{
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 42px;
+    color: black;
+    cursor: pointer;
+}
+.pageContent_specialSection_stanga .titleBox{
+    position: absolute;
+    top: -30%;
+    left: 10%;
+    height: 10%;
+    width: 70%;
+}
+.pageContent_specialSection_stanga .titleBox .text{
+    position: absolute;
+    color: black;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 83px;
+}
+.pageContent_specialSection_stanga .awardsCover{
+    position: absolute;
+    overflow: hidden;
+    top: 10%;
+    left: 10%;
+    height: 80%;
+    width: 95%;
+    cursor: pointer;
+}
+
