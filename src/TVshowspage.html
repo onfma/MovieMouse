@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style/navbar_style.css">
+    <link rel="stylesheet" href="style/header_style.css">
+    <link rel="stylesheet" href="style/aditional_header_style.css">
+
+    <title>MovieMouse - TV Shows</title>
+    <link rel="shortcut icon" href="materiale/soricel.ico" type="image/x-icon">
+
+    <style> 
+      @font-face {
+      font-family: font1;
+      src: url(materiale/DM_Sans/DMSans-Regular.ttf);
+      }
+      * {
+      font-family: font1;
+      box-sizing: border-box;
+      }
+
+      body{
+        background-color:  #FFF2EE;
+        margin: 0;
+      }
+
+    </style>
+  </head>
+
+  <body>
+<!-- HEADER -->
+<div class="container1" style="position: relative;">
+  <span style="height: 100%;"></span>
+    <header class="header">
+      <img id="header-image" src="materiale/Headers/TVshowspageHeader.png" style="width:100%;" onload="positionTranzitie()">
+      <div class="tranzitie"></div>
+      <div class="pageTitleBox">
+        <div class="pageTitle">TV Shows</div>
+      </div>
+    </header>
+</div>
+
+<!-- NAVBAR -->
+    <nav class="navbar">
+
+      <div class="sideMenu">
+        <img onclick="DropdownFunction()" class="sideMenuButton" src="materiale/Menu.png" alt="Menu">
+        <div id="myDropdown" class="dropdown-content">
+          <a href="homepage.html" style="margin-bottom: 40px; margin-top: 27px;"><img src="materiale/soricel.png" style="width:15%;">   Home</a>
+          <a href="newspage.html"><img src="materiale/MenuIcons/newsIcon.png">  Latest News</a>
+          <a href="actorspage.html"><img src="materiale/MenuIcons/actorsIcon.png">  Actors</a>
+          <a href="moviespage.html"><img src="materiale/MenuIcons/movieIcon.png">  Movies</a>
+          <a href="TVshowspage.html"><img src="materiale/MenuIcons/tvIcon.png">  TV Shows</a>
+          <a href="graphicspage.html"><img src="materiale/MenuIcons/graphicsIcon.png">  Info Graphics</a>
+        </div>
+      </div>
+
+      <a href="homepage.html"><img class="logoImagine" src="materiale/logo.png" alt="ImgLogo"> <img class="logoText" src="materiale/LogoText2.png" alt="TextLogo"></a>
+  
+      <div class="SearchBar">
+        <form action="/action_page.php">
+          <input type="text" placeholder="What do you want to see?" name="search">
+          <button type="submit" class="searchButton"><img src="materiale/SearchIcon.png" alt="Lupa"></button>
+        </form>
+      </div>
+    </nav>
+
+
+<!--SCRIPTS -->
+    <script>
+      /* When the user clicks on the button, 
+      toggle between hiding and showing the dropdown content */
+      function DropdownFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+      }
+      
+      // Close the dropdown if the user clicks outside of it
+      window.onclick = function(event) {
+      if (!event.target.matches('.sideMenuButton')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        for (var i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+
+    function positionTranzitie() {
+      var headerImage = document.getElementById('header-image');
+      var tranzitie = document.querySelector('.tranzitie');
+      var pageTitleBox = document.querySelector('.pageTitleBox');
+      var headerHeight = headerImage.offsetHeight-160;
+      tranzitie.style.top = headerHeight + 'px';
+      pageTitleBox.style.top = headerHeight + 'px';
+    }
+    </script>
+
+  </body>
+</html>

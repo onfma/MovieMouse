@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style/navbar_style.css">
+    <link rel="stylesheet" href="style/header_style.css">
+    <link rel="stylesheet" href="style/homepage_header_style.css">
+    <link rel="stylesheet" href="style/footer_style.css">
+    <link rel="stylesheet" href="style/vid_section_style.css">
+    <link rel="stylesheet" href="style/img_section_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>MovieMouse</title>
+    <link rel="shortcut icon" href="materiale/soricel.ico" type="image/x-icon">
+
+    <style> 
+      @font-face {
+      font-family: font1;
+      src: url(materiale/DM_Sans/DMSans-Regular.ttf);
+      }
+      * {
+      font-family: font1;
+      box-sizing: border-box;
+      }
+
+      body{
+        background-color: #FFF2EE;
+        margin: 0;
+        height: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+<!-- HEADER -->
+    <div class="pageSection">
+    <header class="header">
+      <img id="header-image" src="materiale/Headers/homepageCarousel1.png" 
+      style="width:100%; height:100%;" onsize="positionElements()">
+      <div class="tranzitie"></div>
+      
+      <div class="headerTextBox">
+        <div class="title">SAGAwards 2023</div>
+        <div class="text">The only televised awards ceremony to exclusively honor actors, the SAG Awards® 
+          presents 13 awards in TV and film. Voted on by SAG-AFTRA's robust and diverse membership of 
+          130,000+ performers - the SAG Awards has the largest voting body on the awards circuit.</div>
+          <div class="seeAwardsButtonWhole">
+        <button class="seeAwardsButton" onclick="window.location.href='graphicspage.html';">
+          <img class="buttonInButton" src="materiale/playButton.png">
+          <div class="textButton">SEE AWARDS</div>
+        </button></div>
+      </div>
+    </header></div>
+
+<!-- NAVBAR -->
+    <nav class="navbar">
+
+      <div class="sideMenu">
+        <img onclick="DropdownFunction()" class="sideMenuButton" src="materiale/Menu.png" alt="Menu">
+        <div id="myDropdown" class="dropdown-content">
+          <a href="homepage.html" style="margin-bottom: 40px; margin-top: 27px;"><img src="materiale/soricel.png" style="width:15%;">   Home</a>
+          <a href="newspage.html"><img src="materiale/MenuIcons/newsIcon.png">  Latest News</a>
+          <a href="actorspage.html"><img src="materiale/MenuIcons/actorsIcon.png">  Actors</a>
+          <a href="moviespage.html"><img src="materiale/MenuIcons/movieIcon.png">  Movies</a>
+          <a href="TVshowspage.html"><img src="materiale/MenuIcons/tvIcon.png">  TV Shows</a>
+          <a href="graphicspage.html"><img src="materiale/MenuIcons/graphicsIcon.png">  Info Graphics</a>
+        </div>
+      </div>
+
+      <a href="homepage.html"><img class="logoImagine" src="materiale/logo.png" alt="ImgLogo"> <img class="logoText" src="materiale/LogoText1.png" alt="TextLogo"></a>
+  
+      <div class="SearchBar">
+        <form action="/action_page.php">
+          <input type="text" placeholder="What do you want to see?" name="search">
+          <button type="submit" class="searchButton"><img src="materiale/SearchIcon.png" alt="Lupa"></button>
+        </form>
+      </div>
+    </nav>
+
+<!-- PAGE CONTENT -->
+    <!-- CONTENT: Latest News -->
+    <div class="pageSection">
+    <div class="pageContent_imgSection">
+      <div class="title_imgSection">
+        <div class="title">Latest News</div>
+        <div class="seeMoreContainer">
+          <div class="text" onclick="window.location.href='newspage.html';">See more</div>
+        </div>
+      </div>
+      <div class="image_row" style="margin-top: 27px;">
+        <div class="image_column">
+            <figure>
+                <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1200px-No-Image-Placeholder.svg.png' alt='missing' style="width:100%" />
+                <figcaption class="image_caption_date">17/12/2004</figcaption>
+                <figcaption class="image_caption_title">Caption goes here</figcaption>
+                <figcaption class="image_caption_text">Caption goes here</figcaption>
+            </figure>
+        </div>
+        <div class="image_column">
+        
+            <figure>
+                <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1200px-No-Image-Placeholder.svg.png' alt='missing' style="width:100%" />
+                <figcaption class="image_caption_date">17/12/2004</figcaption>
+                <figcaption class="image_caption_title">Caption goes here</figcaption>
+                <figcaption class="image_caption_text">Caption goes here</figcaption>
+            </figure>
+        </div>
+        <div class="image_column"> 
+            <figure>
+                <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1200px-No-Image-Placeholder.svg.png' alt='missing' style="width:100%" />
+                <figcaption class="image_caption_date">17/12/2004</figcaption>
+                <figcaption class="image_caption_title">Caption goes here</figcaption>
+                <figcaption class="image_caption_text">Caption goes here</figcaption>
+             </figure>
+        </div>
+        <div class="image_column">
+            <figure>
+                <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1200px-No-Image-Placeholder.svg.png' alt='missing' style="width:100%" />
+                <figcaption class="image_caption_date">17/12/2004</figcaption>
+                <figcaption class="image_caption_title">Caption goes here</figcaption>
+                <figcaption class="image_caption_text">Caption goes here</figcaption>
+            </figure>
+        </div>
+      </div>      
+    </div></div>
+    
+    <!-- CONTENT: Interviews -->
+    <div class="pageSection" style="height: 651px;">
+    <div class="pageContent_vidSection">
+      <div class="title_vidSection">
+        <div class="title">Interviews</div>
+        <div class="seeMoreContainer">
+          <div class="text" onclick="window.location.href='actorspage.html';">See more</div>
+        </div>
+      </div>
+
+      <div class="video_row">
+        <div class="video_column">
+            <figure class="video_figure">
+                <iframe class="video_player" src="https://www.youtube.com/embed/GRyt3Ov4zz0/?controls=1"></iframe>
+                <figcaption class="video_caption">Barbie | Teaser Trailer 2</figcaption>
+            </figure>
+        </div>
+        <div class="video_column">
+            <figure class="video_figure">
+                <iframe class="video_player" src="https://www.youtube.com/embed/HnzNZ0Mdx4I/?controls=1"></iframe>
+                <figcaption class="video_caption">Ahsoka | Teaser Trailer | Disney+
+                </figcaption>
+            </figure>
+        </div>
+        <div class="video_column">
+            <figure class="video_figure">
+                <iframe class="video_player" src="https://www.youtube.com/embed/shW9i6k8cB0/?controls=1"></iframe>
+                <figcaption class="video_caption">SPIDER-MAN: ACROSS THE SPIDER-VERSE </figcaption>
+            </figure>
+        </div>
+    </div>
+    <div class="clear"></div>
+
+    </div>
+  </div>
+
+  <!-- CONTENT: Recommandations -->
+  <div class="pageSection" style="height: 651px;">
+    <div class="pageContent_vidSection">
+      <div class="title_vidSection">
+        <div class="title">Recommandations</div>
+        <div class="seeMoreContainer">
+          <div class="text" onclick="window.location.href='actorspage.html';">See more</div>
+        </div>
+      </div>
+
+      <div class="video_row">
+        <div class="video_column">
+            <figure class="video_figure">
+                <iframe class="video_player" src="https://www.youtube.com/embed/GRyt3Ov4zz0/?controls=1"></iframe>
+                <figcaption class="video_caption">Barbie | Teaser Trailer 2</figcaption>
+            </figure>
+        </div>
+        <div class="video_column">
+            <figure class="video_figure">
+                <iframe class="video_player" src="https://www.youtube.com/embed/HnzNZ0Mdx4I/?controls=1"></iframe>
+                <figcaption class="video_caption">Ahsoka | Teaser Trailer | Disney+
+                </figcaption>
+            </figure>
+        </div>
+        <div class="video_column">
+            <figure class="video_figure">
+                <iframe class="video_player" src="https://www.youtube.com/embed/shW9i6k8cB0/?controls=1"></iframe>
+                <figcaption class="video_caption">SPIDER-MAN: ACROSS THE SPIDER-VERSE </figcaption>
+            </figure>
+        </div>
+    </div>
+    <div class="clear"></div>
+
+    </div>
+  </div>
+
+<!-- FOOTER -->
+    <footer style="bottom:-330%;">
+      <div class="top-bar"></div>
+      <br>
+          <ul class="footer-ul">
+              <li class="footer-li"><a href="https://twitter.com/MovieMouse" class="footer-icon footer-icon-anim"><i class="fa fa-twitter"></i></a></li>
+              <li class="footer-li"><a href="https://www.facebook.com/MovieMouse" class="footer-icon footer-icon-anim"><i class="fa fa-facebook"></i></a></li>
+              <li class="footer-li"><a href="https://www.instagram.com/MovieMouse" class="footer-icon footer-icon-anim"><i class="fa fa-instagram"></i></a></li>
+              <li class="footer-li"><a href="https://www.youtube.com/channel/MovieMouse" class="footer-icon footer-icon-anim"><i class="fa fa-youtube"></i></a></li>
+          </ul>
+          <ul class="footer-ul">
+              <li class="footer-li"><a href="" class="footer-text">Conditions of Use</a></li>
+              <li class="footer-li"><a href="" class="footer-text">Privacy & Policy</a></li>
+              <li class="footer-li"><a href="" class="footer-text">Press Room</a></li>
+            </ul>
+          <ul class="footer-ul">
+              <li class="footer-li">&copy 2023 MovieMouse by Apostol Iustina & Onofrei Maria</li>
+            </ul>
+    </footer>
+
+<!--SCRIPTS -->
+    <script>
+      /* When the user clicks on the button, 
+      toggle between hiding and showing the dropdown content */
+      function DropdownFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+      }
+      
+      // Close the dropdown if the user clicks outside of it
+      window.onclick = function(event) {
+      if (!event.target.matches('.sideMenuButton')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        for (var i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+
+    function positionElements() {
+      var headerImage = document.getElementById('header-image');
+      var headerHeight = headerImage.offsetHeight;
+
+      var tranzitie = document.querySelector('.tranzitie');
+      tranzitie.style.top = (headerHeight - 160)+ 'px';
+
+    }
+    </script>
+
+  </body>
+</html>
