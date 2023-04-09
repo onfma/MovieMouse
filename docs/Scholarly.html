@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MovieMouse Scholarly Report </title>
+
+    <meta charset = "UTF-8">
+</head>
+
+<body>
+    <h1> Software Requirements Specification </h1>
+        
+    <h1> Movie Mouse </h1>
+
+    <section typeof = "sa:AuthorsList">
+        <h2> Authors </h2>
+            
+        <ul>
+            <li typeof = "sa:ContributorRole" property = "schema:author">
+                <span typeof = "schema:Person">
+                    <meta property = "schema:givenName" content = "Iustina">
+
+                    <meta property = "schema:familyName" content = "Apostol">
+                    
+                    <span property = "schema:name"> Apostol Iustina </span>
+                </span>
+            </li>
+
+            <li typeof = "sa:ContributorRole" property = "schema:author">
+                <span typeof = "schema:Person">
+                    <meta property = "schema:givenName" content = "Maria">
+
+                    <meta property = "schema:familyName" content = "Onofrei">
+                    
+                    <span property = "schema:name"> Onofrei Maria </span>
+                </span>
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h2> Table of Contents </h2>
+        
+        <ul>
+            <li> 
+                <a href = "#introduction">Introduction </a> 
+                <ul>
+                	<li>
+                		<a href = "#purpose">1.1 Purpose </a>
+            		</li>
+            		 <li>
+                		<a href = "#audience">1.2 Intended Audience and Reading Suggestions </a>
+            		</li>
+            		<li>
+                		<a href = "#scope">1.3 Product Scope </a>
+            		</li>
+           			<li>
+                		<a href = "#references">1.4 References </a>
+            		</li>
+                </ul>
+            </li>
+
+            <li>
+                <a href = "#functionalities">Overall Description </a>
+                   <ul>
+	                	<li>
+	                		<a href = "#perspective">2.1 Product Perspective </a>
+	            		</li>
+	            		 <li>
+	                		<a href = "#functions">2.2 Product Functions </a>
+	            		</li>
+	            		<li>
+	                		<a href = "#environment">2.3 Operating Environment </a>
+	            		</li>
+            		</ul>
+            </li>
+
+            <li>
+                <a href = "#page-functionality-and-usage"> Page Functionality and Usage </a>
+
+                <ul>
+                    <li>
+                        <a href = "#the-home-page"> 3.1 The Home Page </a>
+                    </li>
+                    <li>
+                        <a href = "#the-latest-news-page"> 3.2 The Latest News Page </a>
+                    </li>
+                    <li>
+                        <a href = "#the-actors-page"> 3.3 The Actors Page </a>
+                    </li>                   
+                    <li>
+                        <a href = "#the-movies-page"> 3.4 The Movies Page </a>
+                    </li>
+                    <li>
+                        <a href = "#the-TV-shows-page"> 3.5 The TV Shows Page </a>
+                    </li>
+                    <li>
+                        <a href = "#the-infographics-page"> 3.6 The InfoGraphics Page </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href = "#technologies"> Used Technologies </a>
+                <ul>
+                    <li>
+                        <a href = "#front-end-technologies"> 4.1 Front End Tehnologies </a>
+                    </li>
+
+                    <li>
+                        <a href = "#back-end-technologies"> 4.2 Backend Tehnologies </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <section id = "introduction">
+        <h2 id = "#introduction"> 1. Introduction </h2>
+        <h3 id ="purpose"> 1.1 Purpose </h3>
+
+        <p> The purpose of this project is to develop a flexible web-based data 
+            visualization tool for Screen Actors Guild (SAG) Awards actor nominations. 
+            The tool will utilize a custom-built REST/GraphQL API to access data 
+            related to actor nominations, which will be sourced from The Movie 
+            Database (TMDb). The system will provide support for generating statistics 
+            and visualizations using at least three different methods, which can be 
+            exported in CSV, WebP, and SVG formats. Additionally, the website will 
+            support the display of news articles related to each nominated actor, based 
+            on configurable external data sources. The goal is to provide users with an 
+            intuitive and user-friendly interface for exploring and analyzing data related 
+            to actor nominations at the SAG Awards.
+        </p>
+        <h3 id="audience"> 1.2 Intended audience and Reading Suggestions</h3>
+        <p> This document was written in order to help people understand the purpose of this website,
+            how it was made, what functionalities it has and what services it provides. The document should be read in the order it is written.
+        </p>
+        <h3 id="scope"> 1.3 Produc scope</h3>
+        <p> The Actvis project is a web-based data visualization tool designed for both 
+            casual and professional users who want to explore and analyze data related to Screen Actors Guild (SAG) Awards actor nominations. 
+            The goal is to create an intuitive and user-friendly platform for exploring and analyzing data related to actor nominations at the SAG Awards.
+        </p>
+        <h3 id="references"> 1.4. References </h3>
+        <ol>
+            <li> 
+                <a href = "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"> HTML Documentation </a>
+            </li>
+            <li>
+                <a href = "https://www.w3schools.com/css/css_intro.asp"> CSS Guide </a>
+            </li>
+            <li>
+                <a href = "https://www.w3schools.com/js/js_intro.asp"> JavaScript Guide </a>
+            </li>
+        </ol>
+    </section>
+
+    <section id = "functionalities">
+    	<h2>2. Overall Description</h2>
+        <h3 id="perspective"> 2.1 Product Perspective </h3>
+        <p>This is a new, self contained product. It is a software -> website which will provide InfoGraphics to all the users that need them, 
+            in addition to news and other information agout the cinema area. The two components of the product are the front-end, 
+            the user interface and the back-end, the web service that serves the users.</p>
+        <h3 id="functions"> 2.2 Product Functions </h3>    
+        <ul>
+            <li> Navigation without authentification 
+            </li>
+            <li> Search by actor names, movie names, TV shows names and certain categories of cinema
+                (drama, cartoon, action, love story, mistery, fiction, anime) or awards category 
+                (best actor in major role, best supporting actor, best soundtrack, best director etc.)
+            </li>
+            <li> Get news about the current editionm of the SAGAwars in the Actors and Latest News pages
+            </li>
+            <li> Get the latest news about all the cinema area, not just the SAGAwars
+            </li>
+            <li> Get recommandations of upcomming movies and series
+            </li>
+            <li> Navigate with the dropdown navbar
+            </li>
+            <li> Get InfoGraphics about all the SAGAwards editions starting from 1994
+            </li>
+        </ul>
+        <h3 id="environment"> 2.3 Operating Environment </h3>
+        	<p>The website will operate in Mozilla Firefox, Microsoft Edge and Google Chrome browsers for the desktop users, using windows 11, windows 10, windows 8.1, windows 7, Linux Or Mac and for tablets such as Ipad, Ipad Pro, Galaxy Note 9, and also for mobile devices such as Samsung Galaxy S9, Iphone 6/7/8/SE/XR, Microsoft Lumia 950, Nexus 6P Android and so on. </p>  
+    </section>
+
+    <section id = "page-functionality-and-usage">
+        <h2> 3. Page Functionality and Usage </h2>
+
+        <p> In this section, we cover exactly what each page contains, what it allows the user to do 
+            and how it can be used.
+        </p> 
+    </section>
+
+    <section id = "the-home-page">
+        <h3> 3.1 The Home Page </h3>
+
+        <p> The Home page is the first thing the user sees when they visit our website. 
+            It serves as an introduction to the different sections of the website and provides a sneak peek of what the user can expect to find. 
+            The header of the page contains a navigation bar, which allows the user to easily access other parts of the website. 
+            Additionally, it provides a search option, making it easier for the user to find the information they need.
+
+        </p>
+        <p>
+            The Latest news section is prominently featured on the Home page, displaying top news stories in chronological order. 
+            Users can navigate to the news page to read more by clicking on the "See More" button. 
+            The Interviews section contains a collection of video interviews with actors who are nominated for the current SAG Awards. 
+            These interviews provide a unique insight into the lives and experiences of the actors.</p>
+        <p>
+            The Recommandation section presents the user with an array of upcoming movie trailers. 
+            These trailers are carefully selected to provide users with a glimpse of the latest and greatest movies that are soon to hit the big screen. 
+            This section is perfect for movie enthusiasts who are looking for their next big blockbuster hit.
+        </p>
+        <p>
+            Finally, the footer of the Home page contains links to our social media accounts, including Facebook, Twitter, and Instagram. 
+            Users can easily follow us on these platforms to stay up-to-date with the latest news and updates. 
+            The footer also contains a link to our terms and policy page, which outlines our policies regarding the use of the website.
+        </p>
+    </section>
+
+    <section id="the-latest-news-page">
+        <h3>3.2 The Latest News Page</h3>
+        <p>The Latest News Page has been designed to keep our users informed about the latest news and updates related to the SAG Awards and the film industry. It is an essential source of information for anyone who wants to stay up-to-date with the latest happenings in the world of entertainment.</p>
+        <p>Similar to the home page, the Latest News Page features a header that provides users with easy access to other parts of our website. Users can also use the search function to find specific news articles and updates that they may be interested in.</p>
+        <p>The page is divided into five sections that cover a wide range of topics:</p>
+        <ul>
+           <li>The "Who are the winners?" section provides users with information about the winners in different categories at the SAG Awards. It features pictures of the winners and a brief description of their achievements.</li>
+           <li>The "Major News" section is dedicated to the most significant news stories of the week. It covers all the important events that have taken place in the world of entertainment.</li>
+           <li>The "More to Explore" section is a collection of video interviews with the actors nominated for the current SAG Awards. Users can watch these interviews to get a better understanding of the actors and their work.</li>
+           <li>The "Exclusive content" section features articles about the SAG Awards and exclusive information provided by the organizers. It is an excellent source of information for anyone who wants to learn more about the awards and the people behind them.</li>
+           <li>The "Last Week's Hottest News" section provides users with a recap of the most significant news stories from the previous week. It is an excellent way to catch up on any news that you may have missed.</li>
+        </ul>
+        <p> This page contains the same footer as the home page. </p>
+     </section>
+
+     <section id="the-actors-page">
+        <h3>3.3 The Actors Page</h3>
+        <p>Step into the glamorous world of Hollywood with our Actors Page! This page is designed to bring you the latest news and updates about your favorite actors, as well as introduce you to new up-and-coming stars. With the same convenient header options as the home page, you can easily navigate to other parts of our site.</p>
+        <p>The Actors Page is divided into five sections to keep you fully informed and entertained:<br>
+        "Ever been a nominee?" highlights new actors that have recently been nominated and deserve recognition for their talents.<br>
+        "Vote" gives you the chance to show your support for your favorite actors and participate in our weekly poll, with the results posted on our social media.<br>
+        "Exclusive Interviews" provides you with fascinating behind-the-scenes insights and interviews with the actors themselves.<br>
+        "Exclusive Content" is a treasure trove of exclusive articles about the Awards and insider information provided by the organizers.<br>
+        "SAGAwards Infographics" takes you to a visually stunning page of infographics about the Awards.<br>
+        </p>
+        <p>As with our other pages, the Actors Page includes our footer with links to our social media accounts and our terms and policy page. Dive into the world of Hollywood and discover new stars today!</p>
+    </section>
+
+    <section id = "the-movies-page">
+        <h3> 3.4 The Movies Page </h3>
+
+        <p> Welcome to The Movies Page, where we present you with the latest information and updates on all the movies nominated for the prestigious SAG Awards. From exciting trailers to behind-the-scenes interviews with your favorite actors and directors, we've got it all covered! Our aim is to keep you up-to-date with all the news related to the world of movies and their talented makers.</p>
+
+        <p> This page is equipped with the same header options as the home page, making it easy to navigate and explore. The page is split into five different sections, each dedicated to bringing you a unique and exciting movie experience. Whether you're a movie buff or simply looking for something new to watch, we've got you covered.</p>
+
+        <p> Let's dive into the different sections of The Movies Page. First up, we have the "New releases" section, where you can find all the newly announced movies. From blockbuster hits to indie gems, this section has it all. Next, we have the "We are most excited about" section, where we present our favorite release of the season. Here, you can get a sneak peek into the upcoming movies that are generating the most buzz.</p>
+
+        <p> For those who are looking for something to watch in the near future, our "Coming soon in theaters" section is a must-visit. This section features a collection of trailers for all the hot new movies. Whether you're a fan of action-packed adventures or emotional dramas, we've got something for everyone.</p>
+
+        <p> Our "Fan favorites" section is a group of articles about popular movies of the season. Here, you can read reviews, interviews, and other interesting tidbits about the movies that have captured the hearts of fans all around the world. And finally, our "SAGAwards InfoGrafics" takes you to info graphics page, where you can dive deep into the world of movies and learn interesting facts and figures about them.</p>
+
+        <p> This page contains the same footer as the home page, allowing for easy navigation throughout the site. So what are you waiting for? Dive into the world of movies with The Movies Page!</p>
+
+    </section>
+
+    <section id="the-TV-shows-page">
+        <h3>3.5 The TV Shows Page</h3>
+        
+        <p>The TV Shows Page is the ultimate destination for those seeking the latest news and updates on the most exciting TV shows of the season. Designed with the same intuitive layout and user-friendly features as the home page, this section offers an immersive experience for all TV lovers.</p>
+        
+        <p>Divided into five sections, The TV Shows Page caters to a variety of interests and preferences. The "New releases" section is the go-to place for viewers looking for newly announced TV shows, while "We are most excited about" showcases the site's favorite release of the season.</p>
+        
+        <p>For those who can't wait to see the latest TV shows on the big screen, the "Coming soon in theaters" section features a collection of trailers that are sure to get your heart racing. Meanwhile, "Fan favorites" offers an array of articles on the most popular TV shows of the season, giving viewers a behind-the-scenes look at their favorite programs.</p>
+        
+        <p>Finally, The TV Shows Page also features a "SAGAwards InfoGrafics" section that takes you to the info graphics page, where you can dive deeper into the world of TV shows and awards.</p>
+      
+        <p>As with all of our pages, The TV Shows Page is equipped with the same footer as the home page, which provides links to our social media accounts and terms and policy page.</p>
+      </section>
+      
+    <section id = "the-infographics-page">
+        <h3> 3.6 The InfoGraphics Page </h3>
+
+        <p> This page will be a data visualizasion of the awards creating a better understanging of the current nominees and the reach of some actors and directors.
+        </p>
+        <p> This page contains the same footer as the home page. </p>
+    </section>
+   	<section id = "technologies">
+        <h2> 4. Technologies </h2>
+        <h3 id="front-end-technologies"> 4.1 Front-end Technologies </h3>
+
+        <p> Here go the front-end technologies used in the making of our website. (CSS, JAVASCRIPT, HTML) </p>
+        <h3 id="back-end-technologies"> 4.2 Back-end Technologies </h3>
+
+        <p> Here go the back-end technologies used in the making of our website. (PHP) </p>
+    </section>
+</body>
