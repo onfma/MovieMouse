@@ -1,0 +1,178 @@
+.modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: fixed;
+    left: 10%;
+    top: 10%;
+    width: 80%;
+    height: 80%;
+    overflow: auto;
+  
+    z-index: 2;
+    background-color: #FFF2EE;
+  }
+  
+  .modal .flex {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  
+  .btn-close {
+    cursor: pointer;
+    border: none;
+    font-weight: 600;
+    transform: translate(-20px, 50%);
+    padding: 0.5rem 0.7rem;
+    background: #BE123C;
+    color: #FFF2EE;
+    border-radius: 50%;
+    margin-left: auto;
+  }
+  .btn-close:hover {
+    color: black;
+  }
+  
+  .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+    z-index: 1;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .modal .titleBox{
+    margin: 1% auto;
+    height: auto;
+    width: 90%;
+    text-align: center;
+  }
+  
+  .modal .divider{
+    height: 40px;
+  }
+  .modal .divider .divider_maro{
+    background: #E1C1A8;
+    height: 30%;
+  }
+  .modal .divider .divider_rosu{
+    background: #BE123C;
+    height: 70%;
+  }
+  
+  .modal_content{
+    height: auto;
+    width: 100%;
+  }
+  .modal_content2{
+    margin: 1% auto;
+    height: auto;
+    width: 90%;
+  }
+  
+  .modal .section_title{
+    color:#BE123C;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 47px;
+  }
+  
+  
+  .modal .formular_info{
+    height: auto;
+  }
+  .form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .modal .formular_info .form .FormBar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    padding: 6px 10px;
+    width: 317px;
+    height: 36px;
+    border: 2px solid black;
+    border-radius: 6px;
+  }
+  
+  .modal .formular_info .form input[type=text], input[type=tel] {
+    border: none;
+    background: none;
+    width: 260px;
+    height: 24px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color: black;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+  
+  .modal .formular_info .form input::placeholder {
+    color:  black;
+  }
+  
+  .FormBar input[type=text]:focus, input[type=tel]:focus {
+    outline: none;
+    border: none;
+  }
+  
+  
+  
+  
+  
+  .modal .formular_vote{
+    height: auto;
+  }
+  
+  .seeAwardsButtonWhole {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .seeAwardsButton {
+    cursor: pointer;
+    background-color: #BE123C;
+    color: #FFF2EE;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 6px;
+    width: 100px;
+    height: 36px;
+    gap: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .seeAwardsButton .buttonInButton{
+    width: 20px; 
+    height: 20px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+  .seeAwardsButton .textButton{
+    width: 87px;
+    height: 24px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+  }

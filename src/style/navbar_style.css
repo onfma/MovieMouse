@@ -10,7 +10,153 @@
   }
 
   .navbar a {
-    float: right;
+    float: right;.navbar {
+      position: absolute;
+      width: 98%;
+      left: 0;
+      top: 0;
+      overflow: visible;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+  
+    .navbar a {
+      float: right;
+      padding: 50px;
+      color: white;
+      text-decoration: none;
+      font-size: 17px;
+    }
+  
+    .navbar .SearchBar {
+      display: flex;
+      align-items: center;
+      padding: 6px 10px;
+      width: 317px;
+      height: 36px;
+      margin-right: 20px;
+      border: 2px solid #F9FAFB;
+      border-radius: 6px;
+    }
+  
+    .navbar input[type=text] {
+      border: none;
+      background: none;
+      width: 260px;
+      height: 24px;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 24px;
+      color: #F9FAFB;
+      flex: none;
+      order: 0;
+      flex-grow: 0;
+    }
+  
+    .navbar input::placeholder {
+      color:  #F9FAFB;
+    }
+  
+    .SearchBar input[type=text]:focus {
+      outline: none;
+      border: none;
+    }
+    .searchButton {
+      width: 16px;
+      height: 16px;
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+    @media only screen and (max-width: 768px) {
+      .SearchBar input[type="text"] {
+        display: none;
+      }
+    
+      .SearchBar button.searchButton {
+        display: block;
+      }
+      .navbar .SearchBar {
+        width: 36px;
+        height: 36px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+  
+      .SearchBar button.searchButton img {
+        display: block;
+        margin: auto;
+        padding-right: 130px;
+      }
+          
+    }
+    
+  
+    .sideMenu {
+      position: absolute;
+      width: 3%;
+      left: 30px;
+      top: 30px;
+      overflow: visible;
+      justify-content: flex-end;
+      align-items: center;
+      display: inline-block;
+      height: 100%;
+    }
+    .sideMenuButton{
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+    }
+    .dropdown-content {
+      margin-top: 15px;
+      font-weight: bold;
+      border-radius: 10px;
+      display: none;
+      position: absolute;
+      background-color: #BE123C;
+      width: 300px;
+      overflow: visible;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+    .dropdown-content a {
+      float: left;
+      color: #FFF2EE;
+      font-size: 21px;
+      padding: 12px 50px;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 27px;
+    }
+    .dropdown-content a:hover {
+      color: black;
+    }
+    .show {display: block;}
+  
+    .logoImagine{
+      position: absolute;
+      width: 53px;
+      height: 53px;
+      left: 97px;
+      top: 25px;
+    }
+    .logoText{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 0px;
+      gap: 24px;
+      position: absolute;
+      width: 221px;
+      height: 50px;
+      left: 95px;
+      top: 26px;
+    }
+  
+  
     padding: 50px;
     color: white;
     text-decoration: none;
