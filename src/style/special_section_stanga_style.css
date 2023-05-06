@@ -10,6 +10,7 @@
 .pageContent_specialSection_stanga .dreptunghi_rosu{
     position: absolute;
     background-color: #BE123C;
+    top: 30%;
     left: 0%;
     height: 100%;
     width: 40%;
@@ -17,7 +18,7 @@
 .pageContent_specialSection_stanga .imgMare{
     position: absolute;
     overflow: hidden;
-    top: 10%;
+    top: 40%;
     left: 10%;
     height: 80%;
     width: 60%;
@@ -25,11 +26,13 @@
 }
 .pageContent_specialSection_stanga .textBox{
     position: absolute;
-    top: 10%;
+    top: 40%;
     left: 71%;
     right: 5%;
     height: 80%;
     text-align: left;
+    display: flex;
+    align-items: center;
 }
 .pageContent_specialSection_stanga .textBox .text{
     font-weight: 700;
@@ -40,7 +43,7 @@
 }
 .pageContent_specialSection_stanga .titleBox{
     position: absolute;
-    top: -30%;
+    top:0;
     left: 10%;
     height: 10%;
     width: 70%;
@@ -55,7 +58,7 @@
 .pageContent_specialSection_stanga .awardsCover{
     position: absolute;
     overflow: hidden;
-    top: 10%;
+    top: 40%;
     left: 10%;
     height: 80%;
     width: 95%;

@@ -1,0 +1,19 @@
+@font-face {
+    font-family: font1;
+    src: url(materiale/DM_Sans/DMSans-Regular.ttf);
+  }
+  
+  * {
+    font-family: font1;
+    box-sizing: border-box;
+  }
+  
+  body{
+    background-color: #FFF2EE;
+    margin: 0;
+    height: 100%;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }

@@ -1,0 +1,119 @@
+.conditions_textBox{
+    position: absolute;
+    overflow: hidden;
+    height: 1500px;
+    left: 0;
+    right: 0;
+}
+.conditions_textBox .title_box{
+    position: absolute;
+    height: 50px;
+    left: 5%;
+    right: 0;
+    display: flex;
+    align-items: center;
+}
+.conditions_textBox .title_box .title{
+    color: black;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 62px;
+}
+.conditions_textBox .redBox{
+    position: absolute;
+    background-color: #BE123C;
+    top: 50px;
+    left: 5%;
+    right: 0;
+    width: 100%;
+    height: 20px;
+}
+.conditions_textBox .text_box{
+    position: absolute;
+    height: auto;
+    top: 150px;
+    left: 5%;
+    right: 5%;
+    text-align: justify;
+}
+.conditions_textBox .text_box .text{
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 31px;
+}
+
+
+
+
+
+
+
+
+
+
+
+.pageContent{
+    position: relative;
+    overflow: visible;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+
+    height: 500px;
+    top: 55vw;
+}
+
+.pageContent_conditions{
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    height: 1050px;
+    width: 100%;
+}
+.pageContent_conditions:after{
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.pageContent_privacy{
+    position: absolute;
+    overflow: hidden;
+    top: 100%;
+    height: 900px;
+    width: 100%;
+}
+.pageContent_privacy:after{
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.pageContent_press{
+    position: absolute;
+    overflow: hidden;
+    top: 100%;
+    height: 550px;
+    width: 100%;
+}
+.pageContent_press:after{
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.pageContent_footer{
+    position: absolute;
+    top: 100%;
+    height: 262px;
+    width: 100%;
+}

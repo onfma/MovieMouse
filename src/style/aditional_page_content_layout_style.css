@@ -1,0 +1,94 @@
+.pageContent{
+    position: relative;
+    overflow: visible;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+
+    height: 500px;
+    top: 55vw;
+}
+
+.pageContent_1{
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    height: 40vw;
+    width: 100%;
+}
+.pageContent_1:after{
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.pageContent_2{
+    position: absolute;
+    top: 100%;
+    height: 700px;
+    width: 100%;
+}
+.pageContent_2:after{
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.pageContent_3{
+    position: absolute;
+    top: 100%;
+    height: 451px;
+    width: 100%;
+}
+.pageContent_3:after{
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.pageContent_4{
+    position: absolute;
+    top: 100%;
+    height: 40vw;
+    width: 100%;
+}
+.pageContent_4:after{
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.pageContent_5{
+    position: absolute;
+    top: 100%;
+    height: 60vw;
+    width: 100%;
+}
+.pageContent_5:after{
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.pageContent_footer{
+    position: absolute;
+    top: 100%;
+    height: 262px;
+    width: 100%;
+}
+  
