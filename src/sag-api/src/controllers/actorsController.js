@@ -1,6 +1,5 @@
 const fs = require('fs');
 const csv = require('csv-parser');
-
 let actorsData = [];
 
 function loadActorsData() {
@@ -11,7 +10,7 @@ function loadActorsData() {
         if (row.category.toLowerCase().includes('actor')||row.category.toLowerCase().includes('female')||row.category.toLowerCase().includes('male')) {
           const [year, edition] = row.year.split(' - ');
           const actorName = row.full_name;
-          const actorGender = row.category.split(' ')[1].toLowerCase();
+          const actorGender = row.category.toLowerCase().includes('female') ? 'female' : 'male';
 
           const nomination = {
             year: year.split(' ')[0],
@@ -50,7 +49,6 @@ function loadActorsData() {
   });
 }
 
-
 exports.initializeActorsData = async () => {
   try {
     await loadActorsData();
@@ -59,45 +57,75 @@ exports.initializeActorsData = async () => {
   }
 };
 
+exports.getAllActors = (req, res) => {
+  try {
+    res.json(actorsData);
+  } catch (error) {
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
 exports.getActorNominationStatistics = (req, res) => {
   try {
     const nominationStatistics = actorsData.reduce((acc, actor) => {
       actor.nominations.forEach((nomination) => {
         const { year, category, show } = nomination;
-        const key = `${year}-${category}`;
 
-        if (!acc[key]) {
-          acc[key] = {
-            year,
-            category,
+        if (!acc[year]) {
+          acc[year] = {};
+        }
+
+        if (!acc[year][category]) {
+          acc[year][category] = {
             nominees: [],
             winner: null
           };
         }
 
-        acc[key].nominees.push({ name: actor.name, show });
+        acc[year][category].nominees.push({ name: actor.name, show });
 
         if (nomination.won == 'True') {
-          acc[key].winner = actor.name;
+          acc[year][category].winner = actor.name;
         }
       });
 
       return acc;
     }, {});
 
-    const nominationStatisticsList = Object.values(nominationStatistics);
-
-    res.json(nominationStatisticsList);
+    res.json(nominationStatistics);
   } catch (error) {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
 
-
-
-exports.getAllActors = (req, res) => {
+exports.getActorStatisticsByYear = (req, res) => {
   try {
-    res.json(actorsData);
+    const { year } = req.params;
+
+    const nominationStatistics = actorsData.reduce((acc, actor) => {
+      actor.nominations.forEach((nomination) => {
+        if (nomination.year === year) {
+          const { category, show } = nomination;
+
+          if (!acc[category]) {
+            acc[category] = {
+              nominees: [],
+              winner: null
+            };
+          }
+
+          acc[category].nominees.push({ name: actor.name, show });
+
+          if (nomination.won === 'True') {
+            acc[category].winner = actor.name;
+          }
+        }
+      });
+
+      return acc;
+    }, {});
+
+    res.json(nominationStatistics);
   } catch (error) {
     res.status(500).json({ error: 'Internal Server Error' });
   }

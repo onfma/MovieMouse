@@ -9,6 +9,7 @@ actorsController.initializeActorsData()
     router.get('/actors/male', actorsController.getMaleActors);
     router.get('/actors/female', actorsController.getFemaleActors);
     router.get('/actors/statistics', actorsController.getActorNominationStatistics);
+    router.get('/actors/statistics/year/:year', actorsController.getActorStatisticsByYear);
 
 
     console.log('Actors data loaded successfully');

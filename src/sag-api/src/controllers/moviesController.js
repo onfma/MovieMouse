@@ -62,9 +62,6 @@ function loadMoviesData() {
     });
   }
   
-  
-
-
 exports.initializeMoviesData = async () => {
   try {
     await loadMoviesData();
@@ -72,41 +69,84 @@ exports.initializeMoviesData = async () => {
     console.error('Failed to load movies data', error);
   }
 };
-
 exports.getMoviesNominationStatistics = (req, res) => {
-    try {
-      const nominationStatistics = movieData.reduce((acc, movie) => {
-        movie.nominations.forEach((nomination) => {
-          const { year, category, show } = nomination;
-          const key = `${year}-${category}`;
-  
-          if (!acc[key]) {
-            acc[key] = {
-              year,
-              category,
+  try {
+    const nominationStatistics = movieData.reduce((acc, movie) => {
+      movie.nominations.forEach((nomination) => {
+        const { year, category, show } = nomination;
+
+        if (!acc[year]) {
+          acc[year] = {};
+        }
+
+        if (!acc[year][category]) {
+          acc[year][category] = {
+            nominees: [],
+            winner: null
+          };
+        }
+
+        acc[year][category].nominees.push({ name: movie.name, show });
+
+        if (nomination.won === 'True') {
+          acc[year][category].winner = movie.name;
+        }
+      });
+
+      return acc;
+    }, {});
+
+    const nominationStatisticsList = Object.entries(nominationStatistics).map(([year, categories]) => ({
+      year,
+      categories: Object.entries(categories).map(([category, data]) => ({
+        category,
+        ...data
+      }))
+    }));
+
+    res.json(nominationStatisticsList);
+  } catch (error) {
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
+
+exports.getMovieStatisticsByYear = (req, res) => {
+  const { year } = req.params;
+  try {
+    const filteredStatistics = movieData.reduce((acc, movie) => {
+      movie.nominations.forEach((nomination) => {
+        if (nomination.year === year) {
+          const { category, show, won } = nomination;
+
+          if (!acc[category]) {
+            acc[category] = {
               nominees: [],
               winner: null
             };
           }
-  
-          acc[key].nominees.push({ name: movie.name });
-  
-          if (nomination.won === 'True') {
-            acc[key].winner = movie.name;
+
+          acc[category].nominees.push({ name: movie.name, show });
+
+          if (won === 'True') {
+            acc[category].winner = movie.name;
           }
-        });
-  
-        return acc;
-      }, {});
-  
-      const nominationStatisticsList = Object.values(nominationStatistics);
-  
-      res.json(nominationStatisticsList);
-    } catch (error) {
-      res.status(500).json({ error: 'Internal Server Error' });
-    }
-  };
-  
+        }
+      });
+
+      return acc;
+    }, {});
+
+    const filteredStatisticsList = Object.entries(filteredStatistics).map(([category, data]) => ({
+      category,
+      ...data
+    }));
+
+    res.json(filteredStatisticsList);
+  } catch (error) {
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
 
 
 exports.getAllMovies = (req, res) => {

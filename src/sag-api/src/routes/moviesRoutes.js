@@ -7,6 +7,7 @@ moviesController.initializeMoviesData()
     router.get('/movies', moviesController.getAllMovies);
     router.get('/movies/name/:name', moviesController.getMoviesByName);
     router.get('/movies/statistics', moviesController.getMoviesNominationStatistics);
+    router.get('/movies/statistics/year/:year', moviesController.getMovieStatisticsByYear);
 
     console.log('Movies data loaded successfully');
   })
