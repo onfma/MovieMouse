@@ -1,0 +1,47 @@
+.FormBar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    padding: 6px 10px;
+    width: 317px;
+    height: 36px;
+    border: 2px solid #BE123C;
+    border-radius: 6px;
+  }
+
+  .form input[type=password], input[type=email], input[type=text] {
+    border: none;
+    background: none;
+    width: 300px;
+    height: 24px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color: #BE123C;
+  }
+  
+  .form input::placeholder {
+    color:  #BE123C;
+  }
+  
+  .FormBar input[type=password]:focus, input[type=text]:focus, input[type=email]:focus {
+    outline: none;
+    border: none;
+  }
+
+  .seeAwardsButton{
+    cursor: pointer;
+    background-color: #BE123C;
+    color:#FFF2EE;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 16px;
+    width: 147px;
+    height: 36px;
+    align-items: center;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+    
+  }
