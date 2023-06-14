@@ -105,13 +105,14 @@ exports.getAllActors = (req, res) => {
 
 exports.getActorByName = (req, res) => {
   const { name } = req.params;
-  const actor = actorsData.find((item) => item.full_name.toLowerCase() === name.toLowerCase());
+  const actorsByName = actorsData.find((actor) => actor.name.toLowerCase() === name.toLowerCase());
 
-  if (!actor) {
-    return res.status(404).json({ error: 'Actor not found' });
+  if (actorsByName.length === 0) {
+    return res.status(404).json({ error: 'No movies found with the given name' });
   }
 
-  res.json(actor);
+  res.json(actorsByName);
+
 };
 
 exports.getFemaleActors = (req, res) => {
