@@ -7,7 +7,7 @@ function loadMoviesData() {
     return new Promise((resolve, reject) => {
       const uniqueNominations = {};
   
-      fs.createReadStream('../data/screen_actor_guild_awards.csv')
+      fs.createReadStream('./sag-api/data/screen_actor_guild_awards.csv')
         .pipe(csv())
         .on('data', (row) => {
           if (row.category.toLowerCase().includes('motion picture')) {

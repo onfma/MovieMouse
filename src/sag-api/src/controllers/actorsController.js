@@ -4,7 +4,7 @@ let actorsData = [];
 
 function loadActorsData() {
   return new Promise((resolve, reject) => {
-    fs.createReadStream('../data/screen_actor_guild_awards.csv')
+    fs.createReadStream('./sag-api/data/screen_actor_guild_awards.csv')
       .pipe(csv())
       .on('data', (row) => {
         if (row.category.toLowerCase().includes('actor')||row.category.toLowerCase().includes('female')||row.category.toLowerCase().includes('male')) {

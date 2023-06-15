@@ -5,7 +5,7 @@ let seriesData = [];
 
 function loadSeriesData() {
   return new Promise((resolve, reject) => {
-    fs.createReadStream('../data/screen_actor_guild_awards.csv')
+    fs.createReadStream('./sag-api/data/screen_actor_guild_awards.csv')
       .pipe(csv())
       .on('data', (row) => {
         if (row.category.toLowerCase().includes('series')&&row.full_name.toLowerCase().length==0) {

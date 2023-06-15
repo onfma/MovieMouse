@@ -16,6 +16,7 @@
     <script src="scripts/script_general.js" defer></script>
     <script src="scripts/script_aditional_page_layout.js" defer></script>
     <script src="scripts/script_up_button.js" defer></script>
+    <script src="scripts/script_account_management.js" defer></script>
 
     <title>MovieMouse - Login</title>
     <link rel="shortcut icon" href="materiale/soricel.ico" type="image/x-icon">
@@ -52,19 +53,20 @@
 
         <label for="email"><b style="font-size: 36px; margin-left:40%; margin-block-end: 30px;">Email: </b></label><br>
         <div class="FormBar" style="margin-block-end: 10px;">
-          <input type="email" id="email" name="email" size="10" placeholder="Enter your email address" required>
+          <input id="emailField" type="email" id="email" name="email" size="10" placeholder="Enter your email address" required>
         </div>
 
         <label for="password"><b style="font-size: 36px; margin-left:40%;">Password: </b>
           <img src="materiale/sobolan_login.png" style="margin-left:5%;">
         </label><br>
         <div class="FormBar" style="margin-block-end: 50px;">
-          <input type="password" id="password" name="password" size="10" placeholder="Enter your password" required>
+          <input id="passwordField" type="password" id="password" name="password" size="10" placeholder="Enter your password" required>
         </div>
 
-        <button class="seeAwardsButton" style="margin-left:45%;">
+        <button class="seeAwardsButton" style="margin-left:45%;" onclick="login()">
           LOGIN
         </button>
+        <p id="errorMessage" style="text-align: center;"></p>
 
       </div>
 
