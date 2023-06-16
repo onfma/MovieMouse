@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const sqlite3 = require('sqlite3').verbose();
 const actorsRoutes = require('./sag-api/src/routes/actorsRoutes');
 const seriesRoutes = require('./sag-api/src/routes/seriesRoutes');
@@ -11,6 +12,12 @@ const port = 3000;
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static(path.join(__dirname, './sag-api/data')));
+
+app.get('/screen_actor_guild_awards.csv', (req, res) => {
+  const filePath = path.join(__dirname, 'data', 'screen_actor_guild_awards.csv');
+  res.sendFile(filePath);
+});
 
 const db = new sqlite3.Database('./materiale/database.db');
 

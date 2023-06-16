@@ -5,9 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="style/general_style.css">
+    <link rel="stylesheet" href="style/aditional_header_style.css">
     <link rel="stylesheet" href="style/navbar_style.css">
     <link rel="stylesheet" href="style/header_style.css">
-    <link rel="stylesheet" href="style/aditional_header_style.css">
+    <link rel="stylesheet" href="style/up_button_style.css">
+    <link rel="stylesheet" href="style/homepage_header_style.css">
+    <link rel="stylesheet" href="style/homepage_content_layout_style.css">
+    <link rel="stylesheet" href="style/footer_style.css">
+    <link rel="stylesheet" href="style/vid_section_style.css">
+    <link rel="stylesheet" href="style/img_section_style.css">
+    <link rel="stylesheet" href="style/graphic_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="./scripts/script_graphic_table.js"></script>
 
     <title>MovieMouse - InfoGraphics</title>
     <link rel="shortcut icon" href="materiale/soricel.ico" type="image/x-icon">
@@ -78,5 +88,55 @@
     }
     </script>
 
+  <div class="pageContent_1" style="margin-top: 800px;  width: 110vw;">
+    <div class="pageSection" style=" width: 110vw;">
+      <div class="pageContent_imgSection" style="height: 1700px;">
+        <div class="title_imgSection">
+          <div class="title">SAG Data</div>
+        </div>
+        <div class="tableContainer" style="margin-left: -5px;">
+          <div class="input-row">
+            <div class="input-group">
+              <label for="yearFilter" style="font-family: font1;">Edition:</label>
+              <div class="autocomplete">
+                <input id="yearFilter" type="text" placeholder="Filter by year">
+                <div id="yearDropdown" class="autocomplete-items"></div>
+              </div>
+            </div>
+            <div class="input-group">
+              <label for="categoryFilter" style="font-family: font1;">Category:</label>
+              <div class="autocomplete">
+                <input id="categoryFilter" type="text" placeholder="Filter by Category">
+                <div id="categoryDropdown" class="autocomplete-items"></div>
+              </div>
+            </div>
+            <div class="input-group">
+              <label for="fullNameFilter" style="font-family: font1;">Full Name:</label>
+              <div class="autocomplete">
+                <input id="fullNameFilter" type="text" placeholder="Filter by Full Name">
+                <div id="fullNameDropdown" class="autocomplete-items"></div>
+              </div>
+            </div>
+            <div class="input-group">
+              <label for="showFilter" style="font-family: font1;">Show:</label>
+              <div class="autocomplete">
+                <input id="showFilter" type="text" placeholder="Filter by Show">
+                <div id="showDropdown" class="autocomplete-items"></div>
+              </div>
+            </div>
+            <div class="input-group">
+              <button class="seeAwardsButtons" id="applyFilterBtn">Apply Filter</button>
+            </div>
+          </div>
+          <div id="tableNavigationContainer"></div>
+          <div class="pagination">
+            <button class="navBtn" id="prevPageBtn" disabled></button>
+            <span id="currentPage"></span>
+            <button class="navBtn" id="nextPageBtn">></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   </body>
 </html>
