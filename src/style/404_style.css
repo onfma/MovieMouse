@@ -1,0 +1,37 @@
+.text_404{
+    font-family: font1;
+    font-weight: 700;
+    font-size: 96px;
+    line-height: 125px;
+
+    color: #BE123C;
+}
+
+.text2_404{
+    font-family: font1;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 62px;
+
+    color: #000000;
+}
+
+.text3_404{
+    font-family: font1;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 47px;
+
+    color: #000000;
+
+}
+
+.margine_rosie{
+    height: 40px;
+    background-color: #BE123C;
+}
+
+.margine_maro{
+    height: 20px;
+    background-color: #E1C1A8;
+}
