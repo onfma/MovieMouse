@@ -264,7 +264,6 @@ const fetchData = async () => {
           }
         });
       };
-      // Initialize Autocomplete
       const categoryInput = document.getElementById('categoryFilter');
       const fullNameInput = document.getElementById('fullNameFilter');
       const yearInput = document.getElementById('yearFilter');

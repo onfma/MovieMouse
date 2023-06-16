@@ -43,7 +43,6 @@ app.use('/', moviesRoutes);
 app.post('/add-account', (req, res) => {
   const { email, username, password } = req.body;
   
-  // Generate a salt for bcrypt
   bcrypt.genSalt(10, (err, salt) => {
     if (err) {
       console.error('Error generating salt:', err);
@@ -51,7 +50,6 @@ app.post('/add-account', (req, res) => {
       return;
     }
     
-    // Hash the password using bcrypt
     bcrypt.hash(password, salt, (err, hash) => {
       if (err) {
         console.error('Error hashing password:', err);
