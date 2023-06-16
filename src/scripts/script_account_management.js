@@ -19,7 +19,7 @@ function createAccount() {
           messageElement.textContent = 'Account created successfully';
           messageElement.style.color = 'green';
         } else {
-            messageElement.textContent = 'An account with the same username or password already exists';
+            messageElement.textContent = 'An account with the same username or email already exists';
             messageElement.style.color = 'red';
         }
       })
