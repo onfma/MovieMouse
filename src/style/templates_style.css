@@ -1,0 +1,17 @@
+.section_title{
+    font-family: font1;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 60px;
+
+    color: #000000;
+}
+
+.section_content{
+    font-family: font1;
+    font-weight: 550;
+    font-size: 20px;
+    line-height: 26px;
+
+    color: #BE123C;
+}

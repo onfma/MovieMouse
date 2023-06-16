@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="style/general_style.css">
+    <link rel="stylesheet" href="style/navbar_style.css">
+    <link rel="stylesheet" href="style/header_style.css">
+    <link rel="stylesheet" href="style/aditional_header_style.css">
+    <link rel="stylesheet" href="style/up_button_style.css">
+    <link rel="stylesheet" href="style/footer_style.css">
+    <link rel="stylesheet" href="style/conditions_text_style.css">
+    <link rel="stylesheet" href="style/templates_style.css">
+    <link rel="stylesheet" href="style/img_section_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="scripts/script_general.js" defer></script>
+    <script src="scripts/script_up_button.js" defer></script>
+
+    <title>MovieMouse - Movie title</title>
+    <link rel="shortcut icon" href="materiale/soricel.ico" type="image/x-icon">
+  </head>
+
+  <body>
+<!-- HEADER -->
+    <div class="container1" style="position: relative;">
+      <span style="height: 100%;"></span>
+        <header class="header">
+          <img id="header-image" src="materiale/Headers/individualHeader.png" style="width:100%;" onsize="positionTranzitie()">
+          <div class="tranzitie"></div>
+          <div class="pageTitleBox" id="pageTitleBox">
+            <div class="pageTitle" style="font-size: 10vw; top: 20px">Oppenheimer</div>
+          </div>
+        </header>
+    </div>
+
+<!-- NAVBAR -->
+    <nav class="navbar">
+
+      <div class="sideMenu">
+        <img onclick="DropdownFunction()" class="sideMenuButton" src="materiale/Menu.png" alt="Menu">
+        <div id="myDropdown" class="dropdown-content">
+          <a href="homepage.html" style="margin-bottom: 40px; margin-top: 27px;"><img src="materiale/soricel.png" style="width:15%;">   Home</a>
+          <a href="newspage.html"><img src="materiale/MenuIcons/newsIcon.png">  Latest News</a>
+          <a href="actorspage.html"><img src="materiale/MenuIcons/actorsIcon.png">  Actors</a>
+          <a href="moviespage.html"><img src="materiale/MenuIcons/movieIcon.png">  Movies</a>
+          <a href="TVshowspage.html"><img src="materiale/MenuIcons/tvIcon.png">  TV Shows</a>
+          <a href="graphicspage.html"><img src="materiale/MenuIcons/graphicsIcon.png">  Info Graphics</a>
+        </div>
+      </div>
+
+      <a href="homepage.html"><img class="logoImagine" src="materiale/logo.png" alt="ImgLogo"> <img class="logoText" src="materiale/LogoText2.png" alt="TextLogo"></a>
+  
+    </nav>
+
+<!-- UP BUTTON -->
+    <img onclick="topFunction()" id="upBtn" src="materiale/up_button.png" alt="up">
+
+    
+<!-- PAGE CONTENT -->
+    <div class="pageContent" style="top:25vw;">
+        
+        <!-- movie info -->
+        <div style="display: flex; flex-direction: row;">
+            <!-- poster -->
+            <div style="background-color: #BE123C; height: 500px; width: 300px; display: flex; justify-content: center; align-items: center; order: 0">
+                <div style="background-color: gray; height: 450px; width: 300px; margin-left: 200px;">
+                  <img src="https://pbs.twimg.com/media/FvUVt3hXgAAxP1H?format=jpg&name=900x900" style="height: 450px; width: 300px;">
+                </div>
+            </div>  
+            <!-- info -->
+            <div style="order: 1; margin-left: 400px; height: auto; width: 700px;">
+                <div>
+                    <div class="section_title">
+                        Director:
+                    </div>
+                    <div class="section_content">                     
+                        Christopher Nolan
+                    </div>
+                </div>
+
+                <div>
+                    <div class="section_title">
+                        Year:
+                    </div>
+                    <div class="section_content">                     
+                        2023
+                    </div>
+                </div>
+
+                <div>
+                    <div class="section_title">
+                        Duration:
+                    </div>
+                    <div class="section_content">                     
+                        3h
+                    </div>
+                </div>
+
+                <div>
+                    <div class="section_title">
+                        Genres:
+                    </div>
+                    <div class="section_content">                     
+                        Biography, Drama, History
+                    </div>
+                </div>
+
+                <div>
+                    <div class="section_title">
+                        Description:
+                    </div>
+                    <div class="section_content">                     
+                        The story of American scientist J. Robert Oppenheimer and his role in the development of the atomic bomb.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- cast point -->
+        <div style="margin-block-start: 100px; height: 40vw;">
+            <!-- title section -->
+            <div style="display: flex; flex-direction: row;">
+                <div style="order: 0; width: 80vw; height: 36px; background-color: #BE123C;">
+                </div>
+                <div class="section_title" style="order: 1; margin-left: 10px; line-height: 36px;">
+                    Cast
+                </div>
+            </div>
+            <!-- cast -->
+            <div class="pageContent_imgSection" style="height: auto;" >
+                <div class="image_row" style="margin-top: 27px;">
+                  <div class="image_column">
+                      <figure>
+                          <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1200px-No-Image-Placeholder.svg.png' alt='missing' style="width:100%" />
+                          <figcaption class="image_caption_title">Caption goes here</figcaption>
+                          <figcaption class="image_caption_text">Caption goes here</figcaption>
+                      </figure>
+                  </div>
+                  <div class="image_column">
+                  
+                      <figure>
+                          <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1200px-No-Image-Placeholder.svg.png' alt='missing' style="width:100%" />
+                          <figcaption class="image_caption_title">Caption goes here</figcaption>
+                          <figcaption class="image_caption_text">Caption goes here</figcaption>
+                      </figure>
+                  </div>
+                  <div class="image_column"> 
+                      <figure>
+                          <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1200px-No-Image-Placeholder.svg.png' alt='missing' style="width:100%" />
+                          <figcaption class="image_caption_title">Caption goes here</figcaption>
+                          <figcaption class="image_caption_text">Caption goes here</figcaption>
+                      </figure>
+                  </div>
+                  <div class="image_column">
+                      <figure>
+                          <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1200px-No-Image-Placeholder.svg.png' alt='missing' style="width:100%" />
+                          <figcaption class="image_caption_title">Caption goes here</figcaption>
+                          <figcaption class="image_caption_text">Caption goes here</figcaption>
+                      </figure>
+                  </div>
+                </div> 
+        
+            </div>
+        </div>
+
+        <!-- statistics point -->
+        <div style="margin-block-start: 50px;">
+        <!-- title section -->
+        <div style="display: flex; flex-direction: row;">
+            <div style="order: 0; width: 80vw; height: 36px; background-color: #BE123C;">
+            </div>
+            <div class="section_title" style="order: 1; margin-left: 10px; line-height: 36px;">
+                Statistics
+            </div>
+        </div>
+        <!-- STATISTICI -->
+        <div>
+
+        </div>
+        </div>
+
+              
+        <!-- FOOTER -->
+        <div class="pageContent_footer" style="top:120vw;">
+        <footer>
+          <div class="top-bar"></div>
+          <br>
+              <ul class="footer-ul">
+                  <li class="footer-li"><a href="https://twitter.com/MovieMouse" class="footer-icon footer-icon-anim"><i class="fa fa-twitter"></i></a></li>
+                  <li class="footer-li"><a href="https://www.facebook.com/MovieMouse" class="footer-icon footer-icon-anim"><i class="fa fa-facebook"></i></a></li>
+                  <li class="footer-li"><a href="https://www.instagram.com/MovieMouse" class="footer-icon footer-icon-anim"><i class="fa fa-instagram"></i></a></li>
+                  <li class="footer-li"><a href="https://www.youtube.com/channel/MovieMouse" class="footer-icon footer-icon-anim"><i class="fa fa-youtube"></i></a></li>
+              </ul>
+              <ul class="footer-ul">
+                  <li class="footer-li"><a href="conditionspage.html#conditions_of_use" class="footer-text">Conditions of Use</a></li>
+                  <li class="footer-li"><a href="conditionspage.html#privacy_&_policy" class="footer-text">Privacy & Policy</a></li>
+                  <li class="footer-li"><a href="conditionspage.html#press_room" class="footer-text">Press Room</a></li>
+              </ul>
+              <ul class="footer-ul">
+                  <li class="footer-li">&copy 2023 MovieMouse by Apostol Iustina & Onofrei Maria</li>
+              </ul>
+        </footer>
+        </div>
+
+    </div>
+
+  </body>
+</html>
