@@ -75,7 +75,7 @@ figure {
 
 
 .pageSection{
-height: 50vw;
+  height: 50vw;
 }
 
 @media screen and (max-width: 767px) {
