@@ -92,7 +92,6 @@
       }
           
     }
-    
   
     .sideMenu {
       position: absolute;
@@ -289,3 +288,59 @@
     top: 26px;
   }
 
+
+
+  .autocompleteSearch {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .autocompleteSearch-items {
+    padding-top: 5px;
+    width: 290px;
+    position: absolute;
+    border: 1px solid transparent;
+    z-index: 99;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: transparent;
+    color: white;
+    scrollbar-width: thin;
+    scrollbar-color: #e9c5a9 transparent;
+  }
+  
+  .autocompleteSearch-item {
+    width: 275px;
+    padding: 8px 12px;
+    cursor: pointer;
+    background-color: transparent; 
+    color: white;
+  }
+  
+  .autocompleteSearch-item:hover {
+    background-color: #e9c5a9; 
+    color: black;
+  }
+  
+  .autocompleteSearch-active {
+    background-color: #e9c5a9; 
+    color: black;
+  }
+  .autocompleteSearch-items::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .autocompleteSearch-items::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  
+  .autocompleteSearch-items::-webkit-scrollbar-thumb {
+    background-color: #e9c5a9; 
+    border-radius: 4px;
+  }
+  
+  .autocompleteSearch-items::-webkit-scrollbar-thumb:hover {
+    background-color: #999;
+  }
+  

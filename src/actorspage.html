@@ -24,6 +24,7 @@
     <script src="scripts/script_vote_modal.js" defer></script>
     <script src="scripts/script_finish_vote_modal.js" defer></script>
     <script src="scripts/script_up_button.js" defer></script>
+    <script src="scripts/script_search_bar.js"></script>
 
     <title>MovieMouse - Actors</title>
     <link rel="shortcut icon" href="materiale/soricel.ico" type="image/x-icon">
@@ -64,7 +65,10 @@
   
       <div class="SearchBar">
         <form action="/action_page.php">
-          <input type="text" placeholder="What do you want to see?" name="search">
+          <div class="autocompleteSearch">
+            <input id="actor-autocomplete-input" type="text" placeholder="What do you want to see?" name="search">
+            <div id="actor-autocomplete-dropdown" class="autocompleteSearch-items"></div>
+          </div>
           <button type="submit" class="searchButton"><img src="materiale/SearchIcon.png" alt="Lupa"></button>
         </form>
       </div>

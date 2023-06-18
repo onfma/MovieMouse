@@ -221,22 +221,22 @@ const fetchData = async () => {
       
           currentFocus = -1;
           const filteredData = data
-            .filter((rowData, index, self) => {
-              return (
-                rowData[dataKey] &&
-                rowData[dataKey].toLowerCase().startsWith(inputValue) &&
-                self.findIndex((r) => r[dataKey] === rowData[dataKey]) === index
-              );
-            });
+          .filter((rowData, index, self) => {
+            return (
+              rowData[dataKey] &&
+              rowData[dataKey].toLowerCase().includes(inputValue.toLowerCase()) &&
+              self.findIndex((r) => r[dataKey] === rowData[dataKey]) === index
+            );
+          });
       
           const dropdownContainer = document.createElement('div');
           dropdownContainer.classList.add('autocomplete-items');
       
           filteredData.forEach((rowData, index) => {
             const item = document.createElement('div');
-            item.innerHTML = `<strong>${rowData[dataKey].substr(0, inputValue.length)}</strong>${rowData[dataKey].substr(
-              inputValue.length
-            )}`;
+  
+            const regex = new RegExp(inputValue, "gi");
+            item.innerHTML = rowData[dataKey].replace(regex, (match) => `<strong>${match}</strong>`);
             item.classList.add('autocomplete-item');
       
             item.addEventListener('click', () => {
