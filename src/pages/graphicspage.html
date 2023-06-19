@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="../style/general_style.css">
+    <link rel="stylesheet" href="../style/aditional_header_style.css">
+    <link rel="stylesheet" href="../style/navbar_style.css">
+    <link rel="stylesheet" href="../style/header_style.css">
+    <link rel="stylesheet" href="../style/up_button_style.css">
+    <link rel="stylesheet" href="../style/homepage_header_style.css">
+    <link rel="stylesheet" href="../style/homepage_content_layout_style.css">
+    <link rel="stylesheet" href="../style/footer_style.css">
+    <link rel="stylesheet" href="../style/vid_section_style.css">
+    <link rel="stylesheet" href="../style/img_section_style.css">
+    <link rel="stylesheet" href="../style/graphic_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="../scripts/script_graphic_table.js"></script>
+
+    <title>MovieMouse - InfoGraphics</title>
+    <link rel="shortcut icon" href="../materiale/soricel.ico" type="image/x-icon">
+    </style>
+  </head>
+
+  <body>
+<!-- HEADER -->
+<div class="container1" style="position: relative;">
+  <span style="height: 100%;"></span>
+    <header class="header">
+      <img id="header-image" src="../materiale/Headers/graphspageHeader.png" style="width:100%;" onload="positionTranzitie()">
+      <div class="tranzitie"></div>
+      <div class="pageTitleBox">
+        <div class="pageTitle">SAGAwards Info Graphics</div>
+      </div>
+    </header>
+</div>
+
+<!-- NAVBAR -->
+    <nav class="navbar">
+
+      <div class="sideMenu">
+        <img onclick="DropdownFunction()" class="sideMenuButton" src="../materiale/Menu.png" alt="Menu">
+        <div id="myDropdown" class="dropdown-content">
+          <a href="homepage.html" style="margin-bottom: 40px; margin-top: 27px;"><img src="../materiale/soricel.png" style="width:15%;">   Home</a>
+          <a href="newspage.html"><img src="../materiale/MenuIcons/newsIcon.png">  Latest News</a>
+          <a href="actorspage.html"><img src="../materiale/MenuIcons/actorsIcon.png">  Actors</a>
+          <a href="moviespage.html"><img src="../materiale/MenuIcons/movieIcon.png">  Movies</a>
+          <a href="TVshowspage.html"><img src="../materiale/MenuIcons/tvIcon.png">  TV Shows</a>
+          <a href="graphicspage.html"><img src="../materiale/MenuIcons/graphicsIcon.png">  Info Graphics</a>
+        </div>
+      </div>
+
+      <a href="homepage.html"><img class="logoImagine" src="../materiale/logo.png" alt="ImgLogo"> <img class="logoText" src="../materiale/LogoText2.png" alt="TextLogo"></a>
+  
+    </nav>
+
+
+<!--SCRIPTS -->
+    <script>
+      /* When the user clicks on the button, 
+      toggle between hiding and showing the dropdown content */
+      function DropdownFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+      }
+      
+      // Close the dropdown if the user clicks outside of it
+      window.onclick = function(event) {
+      if (!event.target.matches('.sideMenuButton')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        for (var i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+
+    function positionTranzitie() {
+      var headerImage = document.getElementById('header-image');
+      var tranzitie = document.querySelector('.tranzitie');
+      var pageTitleBox = document.querySelector('.pageTitleBox');
+      var headerHeight = headerImage.offsetHeight-160;
+      tranzitie.style.top = headerHeight + 'px';
+      pageTitleBox.style.top = headerHeight + 'px';
+    }
+    </script>
+
+  <div class="pageContent_1" style="margin-top: 800px;  width: auto;">
+    <div class="pageSection" style=" width: 98vw;">
+      <div class="pageContent_imgSection" style="height: 1700px;">
+        <div class="title_imgSection">
+          <div class="title">SAG Data</div>
+        </div>
+        <div class="tableContainer" style="margin-left: -5px;">
+          <div class="input-row">
+            <div class="input-group">
+              <label for="yearFilter" style="font-family: font1;">Edition:</label>
+              <div class="autocomplete">
+                <input id="yearFilter" type="text" placeholder="Filter by year">
+                <div id="yearDropdown" class="autocomplete-items"></div>
+              </div>
+            </div>
+            <div class="input-group">
+              <label for="categoryFilter" style="font-family: font1;">Category:</label>
+              <div class="autocomplete">
+                <input id="categoryFilter" type="text" placeholder="Filter by Category">
+                <div id="categoryDropdown" class="autocomplete-items"></div>
+              </div>
+            </div>
+            <div class="input-group">
+              <label for="fullNameFilter" style="font-family: font1;">Full Name:</label>
+              <div class="autocomplete">
+                <input id="fullNameFilter" type="text" placeholder="Filter by Full Name">
+                <div id="fullNameDropdown" class="autocomplete-items"></div>
+              </div>
+            </div>
+            <div class="input-group">
+              <label for="showFilter" style="font-family: font1;">Show:</label>
+              <div class="autocomplete">
+                <input id="showFilter" type="text" placeholder="Filter by Show">
+                <div id="showDropdown" class="autocomplete-items"></div>
+              </div>
+            </div>
+            <div class="input-group">
+              <button class="seeAwardsButtons" id="applyFilterBtn">Apply Filter</button>
+            </div>
+          </div>
+          <div id="tableNavigationContainer"></div>
+          <div class="pagination">
+            <button class="navBtn" id="prevPageBtn" disabled></button>
+            <span id="currentPage"></span>
+            <button class="navBtn" id="nextPageBtn">></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>

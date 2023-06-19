@@ -4,22 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="style/general_style.css">
-    <link rel="stylesheet" href="style/navbar_style.css">
-    <link rel="stylesheet" href="style/header_style.css">
-    <link rel="stylesheet" href="style/aditional_header_style.css">
-    <link rel="stylesheet" href="style/up_button_style.css">
-    <link rel="stylesheet" href="style/footer_style.css">
-    <link rel="stylesheet" href="style/conditions_text_style.css">
-    <link rel="stylesheet" href="style/templates_style.css">
-    <link rel="stylesheet" href="style/img_section_style.css">
+    <link rel="stylesheet" href="../style/general_style.css">
+    <link rel="stylesheet" href="../style/navbar_style.css">
+    <link rel="stylesheet" href="../style/header_style.css">
+    <link rel="stylesheet" href="../style/aditional_header_style.css">
+    <link rel="stylesheet" href="../style/up_button_style.css">
+    <link rel="stylesheet" href="../style/footer_style.css">
+    <link rel="stylesheet" href="../style/conditions_text_style.css">
+    <link rel="stylesheet" href="../style/templates_style.css">
+    <link rel="stylesheet" href="../style/img_section_style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <script src="scripts/script_general.js" defer></script>
-    <script src="scripts/script_up_button.js" defer></script>
+    <script src="../scripts/script_general.js" defer></script>
+    <script src="../scripts/script_up_button.js" defer></script>
 
-    <title>MovieMouse - Actor name</title>
-    <link rel="shortcut icon" href="materiale/soricel.ico" type="image/x-icon">
+    <title>MovieMouse - Movie title</title>
+    <link rel="shortcut icon" href="../materiale/soricel.ico" type="image/x-icon">
   </head>
 
   <body>
@@ -27,10 +27,10 @@
     <div class="container1" style="position: relative;">
       <span style="height: 100%;"></span>
         <header class="header">
-          <img id="header-image" src="materiale/Headers/individualHeader.png" style="width:100%;" onsize="positionTranzitie()">
+          <img id="header-image" src="../materiale/Headers/individualHeader.png" style="width:100%;" onsize="positionTranzitie()">
           <div class="tranzitie"></div>
           <div class="pageTitleBox" id="pageTitleBox">
-            <div class="pageTitle" style="font-size: 10vw; top: 20px">Cillian Murphy</div>
+            <div class="pageTitle" style="font-size: 10vw; top: 20px">Oppenheimer</div>
           </div>
         </header>
     </div>
@@ -39,75 +39,93 @@
     <nav class="navbar">
 
       <div class="sideMenu">
-        <img onclick="DropdownFunction()" class="sideMenuButton" src="materiale/Menu.png" alt="Menu">
+        <img onclick="DropdownFunction()" class="sideMenuButton" src="../materiale/Menu.png" alt="Menu">
         <div id="myDropdown" class="dropdown-content">
-          <a href="homepage.html" style="margin-bottom: 40px; margin-top: 27px;"><img src="materiale/soricel.png" style="width:15%;">   Home</a>
-          <a href="newspage.html"><img src="materiale/MenuIcons/newsIcon.png">  Latest News</a>
-          <a href="actorspage.html"><img src="materiale/MenuIcons/actorsIcon.png">  Actors</a>
-          <a href="moviespage.html"><img src="materiale/MenuIcons/movieIcon.png">  Movies</a>
-          <a href="TVshowspage.html"><img src="materiale/MenuIcons/tvIcon.png">  TV Shows</a>
-          <a href="graphicspage.html"><img src="materiale/MenuIcons/graphicsIcon.png">  Info Graphics</a>
+          <a href="homepage.html" style="margin-bottom: 40px; margin-top: 27px;"><img src="../materiale/soricel.png" style="width:15%;">   Home</a>
+          <a href="newspage.html"><img src="../materiale/MenuIcons/newsIcon.png">  Latest News</a>
+          <a href="actorspage.html"><img src="../materiale/MenuIcons/actorsIcon.png">  Actors</a>
+          <a href="moviespage.html"><img src="../materiale/MenuIcons/movieIcon.png">  Movies</a>
+          <a href="TVshowspage.html"><img src="../materiale/MenuIcons/tvIcon.png">  TV Shows</a>
+          <a href="graphicspage.html"><img src="../materiale/MenuIcons/graphicsIcon.png">  Info Graphics</a>
         </div>
       </div>
 
-      <a href="homepage.html"><img class="logoImagine" src="materiale/logo.png" alt="ImgLogo"> <img class="logoText" src="materiale/LogoText2.png" alt="TextLogo"></a>
+      <a href="homepage.html"><img class="logoImagine" src="../materiale/logo.png" alt="ImgLogo"> <img class="logoText" src="../materiale/LogoText2.png" alt="TextLogo"></a>
   
     </nav>
 
 <!-- UP BUTTON -->
-    <img onclick="topFunction()" id="upBtn" src="materiale/up_button.png" alt="up">
+    <img onclick="topFunction()" id="upBtn" src="../materiale/up_button.png" alt="up">
 
     
 <!-- PAGE CONTENT -->
     <div class="pageContent" style="top:25vw;">
         
-        <!-- actor info -->
+        <!-- movie info -->
         <div style="display: flex; flex-direction: row;">
-            <!-- foto -->
+            <!-- poster -->
             <div style="background-color: #BE123C; height: 500px; width: 300px; display: flex; justify-content: center; align-items: center; order: 0">
                 <div style="background-color: gray; height: 450px; width: 300px; margin-left: 200px;">
-                  <img src="https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcQibIn0sGo_s-ueoWVfoIc4xCKZYJ-dqeqgkK3gPCEE_yWHwevTkK7Bihziz4beCX2gIxEZu6QSFNAVDa0" style="height: 450px; width: 300px;">
+                  <img src="https://pbs.twimg.com/media/FvUVt3hXgAAxP1H?format=jpg&name=900x900" style="height: 450px; width: 300px;">
                 </div>
             </div>  
             <!-- info -->
             <div style="order: 1; margin-left: 400px; height: auto; width: 700px;">
                 <div>
                     <div class="section_title">
-                        Biography:
-                    </div>
-                    <div class="section_content" style="margin-block-end: 30px;">                     
-                        The story of American scientist J. Robert Oppenheimer and his role in the development of the atomic bomb.
-                    </div>
-                </div>
-
-                <div>
-                    <div class="section_title">
-                        Date of birth:
-                    </div>
-                    <div class="section_content" style="margin-block-end: 30px;">                     
-                        1/01/2023
-                    </div>
-                </div>
-
-                <div>
-                    <div class="section_title">
-                        Place of birth:
+                        Director:
                     </div>
                     <div class="section_content">                     
-                        Emmett, Idaho, USA
+                        Christopher Nolan
+                    </div>
+                </div>
+
+                <div>
+                    <div class="section_title">
+                        Year:
+                    </div>
+                    <div class="section_content">                     
+                        2023
+                    </div>
+                </div>
+
+                <div>
+                    <div class="section_title">
+                        Duration:
+                    </div>
+                    <div class="section_content">                     
+                        3h
+                    </div>
+                </div>
+
+                <div>
+                    <div class="section_title">
+                        Genres:
+                    </div>
+                    <div class="section_content">                     
+                        Biography, Drama, History
+                    </div>
+                </div>
+
+                <div>
+                    <div class="section_title">
+                        Description:
+                    </div>
+                    <div class="section_content">                     
+                        The story of American scientist J. Robert Oppenheimer and his role in the development of the atomic bomb.
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- know for point -->
+        <!-- cast point -->
         <div style="margin-block-start: 100px; height: 40vw;">
             <!-- title section -->
             <div style="display: flex; flex-direction: row;">
                 <div style="order: 0; width: 80vw; height: 36px; background-color: #BE123C;">
                 </div>
                 <div class="section_title" style="order: 1; margin-left: 10px; line-height: 36px;">
-                    Known for
+                    Cast
                 </div>
             </div>
             <!-- cast -->

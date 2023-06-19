@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="../style/general_style.css">
+    <link rel="stylesheet" href="../style/navbar_style.css">
+    <link rel="stylesheet" href="../style/header_style.css">
+    <link rel="stylesheet" href="../style/up_button_style.css">
+    <link rel="stylesheet" href="../style/aditional_header_style.css">
+    <link rel="stylesheet" href="../style/aditional_page_content_layout_style.css">
+    <link rel="stylesheet" href="../style/footer_style.css">
+    <link rel="stylesheet" href="../style/vid_section_style.css">
+    <link rel="stylesheet" href="../style/img_section_style.css">
+    <link rel="stylesheet" href="../style/special_section_dreapta_style.css">
+    <link rel="stylesheet" href="../style/special_section_stanga_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="../scripts/script_general.js" defer></script>
+    <script src="../scripts/script_aditional_page_layout.js" defer></script>
+    <script src="../scripts/script_up_button.js" defer></script>
+    <script src="../scripts/script_search_bar.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <title>MovieMouse - TV Shows</title>
+    <link rel="shortcut icon" href="../materiale/soricel.ico" type="image/x-icon">
+  </head>
+
+  <body>
+
+<!-- HEADER -->
+<div class="container1" style="position: relative;">
+  <span style="height: 100%;"></span>
+    <header class="header">
+      <img id="header-image" src="../materiale/Headers/TVshowspageHeader.png" style="width:100%;" onload="positionTranzitie()">
+      <div class="tranzitie"></div>
+      <div class="pageTitleBox">
+        <div class="pageTitle" style="font-size: 10vw; top: 20px">TV Shows</div>
+      </div>
+    </header>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+
+  <div class="sideMenu" style="width:auto">
+    <img onclick="DropdownFunction()" class="sideMenuButton" src="../materiale/Menu.png" alt="Menu">
+    <div id="myDropdown" class="dropdown-content">
+      <a href="homepage.html" style="margin-bottom: 40px; margin-top: 27px;"><img src="../materiale/soricel.png" style="width:15%;">   Home</a>
+      <a href="newspage.html"><img src="../materiale/MenuIcons/newsIcon.png">  Latest News</a>
+      <a href="actorspage.html"><img src="../materiale/MenuIcons/actorsIcon.png">  Actors</a>
+      <a href="moviespage.html"><img src="../materiale/MenuIcons/movieIcon.png">  Movies</a>
+      <a href="TVshowspage.html"><img src="../materiale/MenuIcons/tvIcon.png">  TV Shows</a>
+      <a href="graphicspage.html"><img src="../materiale/MenuIcons/graphicsIcon.png">  Info Graphics</a>
+    </div>
+  </div>
+
+  <a href="homepage.html"><img class="logoImagine" src="../materiale/logo.png" alt="ImgLogo"> <img class="logoText" src="../materiale/LogoText2.png" alt="TextLogo"></a>
+
+  <div class="SearchBar">
+    <form action="/action_page.php">
+      <div class="autocompleteSearch">
+        <input id="show-autocomplete-input" type="text" placeholder="What do you want to see?" name="search">
+        <div id="show-autocomplete-dropdown" class="autocompleteSearch-items"></div>
+      </div>
+      <button type="submit" class="searchButton"><img src="../materiale/SearchIcon.png" alt="Lupa"></button>
+    </form>
+  </div>
+</nav>
+
+<!-- UP BUTTON -->
+<img onclick="topFunction()" id="upBtn" src="../materiale/up_button.png" ></img>
+
+<!-- PAGE CONTENT -->
+<div class="pageContent">
+  <!-- CONTENT: New releases -->
+  <div class="pageContent_1">
+    <div class="pageSection">
+      <div class="pageContent_imgSection">
+
+        <div class="title_imgSection">
+          <div class="title">New releases</div>
+        </div>
+        
+        <div class="image_row" style="margin-top: 27px;">
+          <div class="image_column">
+            <figure>
+              <img src="" alt="" style="width:83%" />
+              <figcaption class="image_caption_date"></figcaption>
+              <figcaption class="image_caption_title" style="width:83%"></figcaption>
+              <figcaption class="image_caption_text" style="width:83%"></figcaption>
+            </figure>
+          </div>
+          <div class="image_column">
+            <figure>
+              <img src="" alt="" style="width:83%" />
+              <figcaption class="image_caption_date"></figcaption>
+              <figcaption class="image_caption_title" style="width:83%"></figcaption>
+              <figcaption class="image_caption_text" style="width:83%"></figcaption>
+            </figure>
+          </div>
+          <div class="image_column"> 
+            <figure>
+              <img src="" alt="" style="width:83%" />
+              <figcaption class="image_caption_date"></figcaption>
+              <figcaption class="image_caption_title" style="width:83%"></figcaption>
+              <figcaption class="image_caption_text" style="width:83%"></figcaption>
+            </figure>
+          </div>
+          <div class="image_column">
+            <figure>
+              <img src="" alt="" style="width:83%" />
+              <figcaption class="image_caption_date"></figcaption>
+              <figcaption class="image_caption_title" style="width:83%"></figcaption>
+              <figcaption class="image_caption_text" style="width:83%"></figcaption>
+            </figure>
+          </div>
+          <!-- <script src="../tmdb-api/newReleasesTV.js"></script> -->
+        </div>   
+          
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CONTENT: Most excited about -->
+  <div class="pageContent_2">
+    <div class="pageSection" style="height: 800px;">
+      <div class="pageContent_specialSection_dreapta" >
+        <div class="dreptunghi_rosu"></div>
+        <div class="imgMare">
+          <iframe class="video_player" style="height: 100%;" src="https://www.youtube.com/embed/GRyt3Ov4zz0/?controls=1"></iframe>
+        </div>
+        <div class="textBox">
+          <div class="text" onclick="window.location.href='https://www.imdb.com/title/tt10366206/?ref_=nv_sr_srsg_1_tt_2_nm_5_q_j';">
+          <a style="color:#BE123C; font-size: 64px; line-height: 83px;">We<br>are<br>most<br>exited<br>about...<br></a><a style="font-size: 48px;">Barbie(2023)</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENT: Coming soon in theaters -->
+  <div class="pageContent_3">
+    <div class="pageSection">
+      <div class="pageContent_vidSection" >
+        
+        <div class="title_vidSection">
+          <div class="title">Coming soon in theaters</div>
+        </div>
+
+          <div class="video_row">
+            <div class="video_column">
+                <figure class="video_figure">
+                    <iframe class="video_player" src="https://www.youtube.com/embed/GRyt3Ov4zz0/?controls=1"></iframe>
+                    <figcaption class="video_caption">Barbie | Teaser Trailer 2</figcaption>
+                </figure>
+            </div>
+            <div class="video_column">
+                <figure class="video_figure">
+                    <iframe class="video_player" src="https://www.youtube.com/embed/HnzNZ0Mdx4I/?controls=1"></iframe>
+                    <figcaption class="video_caption">Ahsoka | Teaser Trailer | Disney+
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="video_column">
+                <figure class="video_figure">
+                    <iframe class="video_player" src="https://www.youtube.com/embed/shW9i6k8cB0/?controls=1"></iframe>
+                    <figcaption class="video_caption">SPIDER-MAN: ACROSS THE SPIDER-VERSE </figcaption>
+                </figure>
+            </div>
+          </div>
+
+        <div class="clear"></div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENT: Fan favorites -->
+  <div class="pageContent_4">
+    <div class="pageSection">
+      <div class="pageContent_imgSection">
+
+        <div class="title_imgSection">
+          <div class="title">Fan favorites</div>
+        </div>
+        
+        <div class="image_row" style="margin-top: 27px;">
+          <div class="image_column">
+            <figure>
+              <img src="" alt="" style="width:83%" />
+              <figcaption class="image_caption_date"></figcaption>
+              <figcaption class="image_caption_title" style="width:83%"></figcaption>
+              <figcaption class="image_caption_text" style="width:83%"></figcaption>
+            </figure>
+          </div>
+          <div class="image_column">
+            <figure>
+              <img src="" alt="" style="width:83%" />
+              <figcaption class="image_caption_date"></figcaption>
+              <figcaption class="image_caption_title" style="width:83%"></figcaption>
+              <figcaption class="image_caption_text" style="width:83%"></figcaption>
+            </figure>
+          </div>
+          <div class="image_column"> 
+            <figure>
+              <img src="" alt="" style="width:83%" />
+              <figcaption class="image_caption_date"></figcaption>
+              <figcaption class="image_caption_title" style="width:83%"></figcaption>
+              <figcaption class="image_caption_text" style="width:83%"></figcaption>
+            </figure>
+          </div>
+          <div class="image_column">
+            <figure>
+              <img src="" alt="" style="width:83%" />
+              <figcaption class="image_caption_date"></figcaption>
+              <figcaption class="image_caption_title" style="width:83%"></figcaption>
+              <figcaption class="image_caption_text" style="width:83%"></figcaption>
+            </figure>
+          </div>
+          <script src="../tmdb-api/trendingTV.js"></script>
+        </div>    
+          
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENT: Infographics -->
+  <div class="pageContent_5">
+    <div class="pageContent_specialSection_stanga">
+      <div class="dreptunghi_rosu"></div>
+      <div class="titleBox">
+        <div class="text">SAGAwards <a style="color: #BE123C;">InfoGraphics >></a> </div>
+      </div>
+      <div class="awardsCover">
+        <img src="../materiale/SpecialSections/sagAwards.png" 
+        onclick="window.location.href='graphicspage.html';">
+      </div>
+    </div>
+  </div>
+  
+  <!-- FOOTER -->
+  <div class="pageContent_footer">
+    <footer>
+      <div class="top-bar"></div>
+      <br>
+          <ul class="footer-ul">
+              <li class="footer-li"><a href="https://twitter.com/MovieMouse" class="footer-icon footer-icon-anim"><i class="fa fa-twitter"></i></a></li>
+              <li class="footer-li"><a href="https://www.facebook.com/MovieMouse" class="footer-icon footer-icon-anim"><i class="fa fa-facebook"></i></a></li>
+              <li class="footer-li"><a href="https://www.instagram.com/MovieMouse" class="footer-icon footer-icon-anim"><i class="fa fa-instagram"></i></a></li>
+              <li class="footer-li"><a href="https://www.youtube.com/channel/MovieMouse" class="footer-icon footer-icon-anim"><i class="fa fa-youtube"></i></a></li>
+          </ul>
+          <ul class="footer-ul">
+              <li class="footer-li"><a href="conditionspage.html#conditions_of_use" class="footer-text">Conditions of Use</a></li>
+              <li class="footer-li"><a href="conditionspage.html#privacy_&_policy" class="footer-text">Privacy & Policy</a></li>
+              <li class="footer-li"><a href="conditionspage.html#press_room" class="footer-text">Press Room</a></li>
+          </ul>
+          <ul class="footer-ul">
+              <li class="footer-li">&copy 2023 MovieMouse by Apostol Iustina & Onofrei Maria</li>
+          </ul>
+    </footer>
+  </div>
+</div> 
+
+  </body>
+</html>
