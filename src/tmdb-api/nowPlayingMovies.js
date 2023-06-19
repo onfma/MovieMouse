@@ -1,13 +1,13 @@
 const apiKey = '9d086ab036170e8ab7e68ab954be6f58';
 
-const trendingUrl = `https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}`;
+const trendingUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`;
 
 fetch(trendingUrl)
   .then(response => response.json())
   .then(data => {
-    const trendingMovies = data.results.slice(4, 12);
+    const trendingMovies = data.results.slice(0, 4);
 
-    const imageColumns = document.querySelectorAll('.pageContent_4 .image_column');
+    const imageColumns = document.querySelectorAll('.image_row .image_column');
 
     for (let i = 0; i < trendingMovies.length; i++) {
       const movie = trendingMovies[i];
@@ -26,7 +26,7 @@ fetch(trendingUrl)
       const captionText = imageColumn.querySelector('.image_caption_text');
       const overview = movie.overview;
 
-      // description up to 150 characters
+      // descrierea pana in 150 de caractere
       if (overview.length > 150) {
         captionText.textContent = overview.substring(0, 150) + '...';
       } else {

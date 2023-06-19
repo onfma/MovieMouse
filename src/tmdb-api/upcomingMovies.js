@@ -1,7 +1,7 @@
 const apiKey = '9d086ab036170e8ab7e68ab954be6f58';
-const trendingUrl = `https://api.themoviedb.org/3/trending/tv/day?api_key=${apiKey}`;
+const upcomingUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}`;
 
-fetch(trendingUrl)
+fetch(upcomingUrl)
   .then(response => {
     if (!response.ok) {
       throw new Error('Network response was not OK');
@@ -9,16 +9,16 @@ fetch(trendingUrl)
     return response.json();
   })
   .then(data => {
-    const trendingTVShows = data.results.slice(0, 3);
+    const upcomingMovies = data.results.slice(1, 4);
 
-    const videoColumns = document.querySelectorAll('.video_column');
+    const videoColumns = document.querySelectorAll('.pageContent_3 .video_column');
 
-    for (let i = 0; i < trendingTVShows.length; i++) {
-      const show = trendingTVShows[i];
+    for (let i = 0; i < upcomingMovies.length; i++) {
+      const movie = upcomingMovies[i];
       const videoColumn = videoColumns[i];
 
-      // Fetch the trailer videos for the current TV show
-      const videosUrl = `https://api.themoviedb.org/3/tv/${show.id}/videos?api_key=${apiKey}`;
+      // Fetch the trailer videos for the current movie
+      const videosUrl = `https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=${apiKey}`;
       fetch(videosUrl)
         .then(response => {
           if (!response.ok) {
@@ -39,7 +39,7 @@ fetch(trendingUrl)
         });
 
       const captionTitle = videoColumn.querySelector('.video_caption');
-      captionTitle.textContent = show.name;
+      captionTitle.textContent = movie.title;
     }
   })
   .catch(error => {

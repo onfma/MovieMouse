@@ -1,6 +1,6 @@
 const apiKey = '9d086ab036170e8ab7e68ab954be6f58';
 
-const trendingUrl = `https://api.themoviedb.org/3/trending/person/day?api_key=${apiKey}`;
+const trendingUrl = `https://api.themoviedb.org/3/person/popular?api_key=${apiKey}`;
 
 fetch(trendingUrl)
   .then(response => {
@@ -15,7 +15,7 @@ fetch(trendingUrl)
     const trendingPeople = data.results.slice(0, 4);
     console.log(trendingPeople);
 
-    const imageColumns = document.querySelectorAll('.pageContent_4 .pageSection .pageContent_imgSection .image_row .image_column');
+    const imageColumns = document.querySelectorAll('.formular_vote .image_row .image_column');
 
     for (let i = 0; i < trendingPeople.length; i++) {
       const person = trendingPeople[i];
@@ -30,16 +30,6 @@ fetch(trendingUrl)
 
       const captionTitle = imageColumn.querySelector('.image_caption_title');
       captionTitle.textContent = person.name;
-
-      const captionText = imageColumn.querySelector('.image_caption_text');
-      const knownFor = person.known_for.map(item => item.title).join(', ');
-
-      // Description up to 150 characters
-      if (knownFor.length > 150) {
-        captionText.textContent = knownFor.substring(0, 150) + '...';
-      } else {
-        captionText.textContent = knownFor;
-      }
     }
   })
   .catch(error => {
