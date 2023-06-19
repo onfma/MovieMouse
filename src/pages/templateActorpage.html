@@ -17,6 +17,7 @@
 
     <script src="../scripts/script_general.js" defer></script>
     <script src="../scripts/script_up_button.js" defer></script>
+    <script src="../utility-scripts/script_actor_page.js" defer></script>
 
     <title>MovieMouse - Actor name</title>
     <link rel="shortcut icon" href="../materiale/soricel.ico" type="image/x-icon">
@@ -30,7 +31,7 @@
           <img id="header-image" src="../materiale/Headers/individualHeader.png" style="width:100%;" onsize="positionTranzitie()">
           <div class="tranzitie"></div>
           <div class="pageTitleBox" id="pageTitleBox">
-            <div class="pageTitle" style="font-size: 10vw; top: 20px">Cillian Murphy</div>
+            <div id="actorName" class="pageTitle" style="font-size: 10vw; top: 20px">Cillian Murphy</div>
           </div>
         </header>
     </div>
@@ -66,7 +67,7 @@
             <!-- foto -->
             <div style="background-color: #BE123C; height: 500px; width: 300px; display: flex; justify-content: center; align-items: center; order: 0">
                 <div style="background-color: gray; height: 450px; width: 300px; margin-left: 200px;">
-                  <img src="https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcQibIn0sGo_s-ueoWVfoIc4xCKZYJ-dqeqgkK3gPCEE_yWHwevTkK7Bihziz4beCX2gIxEZu6QSFNAVDa0" style="height: 450px; width: 300px;">
+                  <img id="headShot" src="https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcQibIn0sGo_s-ueoWVfoIc4xCKZYJ-dqeqgkK3gPCEE_yWHwevTkK7Bihziz4beCX2gIxEZu6QSFNAVDa0" style="height: 450px; width: 300px;">
                 </div>
             </div>  
             <!-- info -->
@@ -75,7 +76,7 @@
                     <div class="section_title">
                         Biography:
                     </div>
-                    <div class="section_content" style="margin-block-end: 30px;">                     
+                    <div id="biographySection" class="section_content" style="margin-block-end: 30px;">                     
                         The story of American scientist J. Robert Oppenheimer and his role in the development of the atomic bomb.
                     </div>
                 </div>
@@ -84,7 +85,7 @@
                     <div class="section_title">
                         Date of birth:
                     </div>
-                    <div class="section_content" style="margin-block-end: 30px;">                     
+                    <div id="birthDay" class="section_content" style="margin-block-end: 30px;">                     
                         1/01/2023
                     </div>
                 </div>
@@ -93,7 +94,7 @@
                     <div class="section_title">
                         Place of birth:
                     </div>
-                    <div class="section_content">                     
+                    <div id="birthPlace" class="section_content">                     
                         Emmett, Idaho, USA
                     </div>
                 </div>

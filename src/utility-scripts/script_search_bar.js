@@ -229,21 +229,21 @@ const fetchData = async () => {
         switch (type) {
           case 'actor':
             if (validActor(key)) {
-              window.location.href = 'templateActorpage.html';
+              window.location.href = 'templateActorpage.html?search=' + encodeURIComponent(key);
             } else {
               window.location.href = '404errorpage.html';
             }
             break;
           case 'movie':
             if (validMovie(key)) {
-              window.location.href = 'templateMoviepage.html';
+              window.location.href = 'templateMoviepage.html?search=' + encodeURIComponent(key);
             } else {
               window.location.href = '404errorpage.html';
             }
             break;
           case 'show':
             if (validShow(key)) {
-              window.location.href = 'templateTVshowpage.html';
+              window.location.href = 'templateTVshowpage.html?search=' + encodeURIComponent(key);
             } else {
               window.location.href = '404errorpage.html';
             }

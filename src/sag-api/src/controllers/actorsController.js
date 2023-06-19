@@ -135,8 +135,8 @@ exports.getActorByName = (req, res) => {
   const { name } = req.params;
   const actorsByName = actorsData.find((actor) => actor.name.toLowerCase() === name.toLowerCase());
 
-  if (actorsByName.length === 0) {
-    return res.status(404).json({ error: 'No movies found with the given name' });
+  if (actorsByName === '') {
+    return res.status(404).json({ error: 'No actor found with the given name' });
   }
 
   res.json(actorsByName);

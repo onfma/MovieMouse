@@ -17,6 +17,7 @@
 
     <script src="../scripts/script_general.js" defer></script>
     <script src="../scripts/script_up_button.js" defer></script>
+    <script src="../utility-scripts/script_movie_page.js" defre></script>
 
     <title>MovieMouse - Movie title</title>
     <link rel="shortcut icon" href="../materiale/soricel.ico" type="image/x-icon">
@@ -30,7 +31,7 @@
           <img id="header-image" src="../materiale/Headers/individualHeader.png" style="width:100%;" onsize="positionTranzitie()">
           <div class="tranzitie"></div>
           <div class="pageTitleBox" id="pageTitleBox">
-            <div class="pageTitle" style="font-size: 10vw; top: 20px">Oppenheimer</div>
+            <div id="movieName" class="pageTitle" style="font-size: 10vw; top: 20px">Oppenheimer</div>
           </div>
         </header>
     </div>
@@ -66,7 +67,7 @@
             <!-- poster -->
             <div style="background-color: #BE123C; height: 500px; width: 300px; display: flex; justify-content: center; align-items: center; order: 0">
                 <div style="background-color: gray; height: 450px; width: 300px; margin-left: 200px;">
-                  <img src="https://pbs.twimg.com/media/FvUVt3hXgAAxP1H?format=jpg&name=900x900" style="height: 450px; width: 300px;">
+                  <img id="poster" src="https://pbs.twimg.com/media/FvUVt3hXgAAxP1H?format=jpg&name=900x900" style="height: 450px; width: 300px;">
                 </div>
             </div>  
             <!-- info -->
@@ -75,7 +76,7 @@
                     <div class="section_title">
                         Director:
                     </div>
-                    <div class="section_content">                     
+                    <div id="director" class="section_content">                     
                         Christopher Nolan
                     </div>
                 </div>
@@ -84,7 +85,7 @@
                     <div class="section_title">
                         Year:
                     </div>
-                    <div class="section_content">                     
+                    <div id="year" class="section_content">                     
                         2023
                     </div>
                 </div>
@@ -93,7 +94,7 @@
                     <div class="section_title">
                         Duration:
                     </div>
-                    <div class="section_content">                     
+                    <div id="duration" class="section_content">                     
                         3h
                     </div>
                 </div>
@@ -102,7 +103,7 @@
                     <div class="section_title">
                         Genres:
                     </div>
-                    <div class="section_content">                     
+                    <div id="genres" class="section_content">                     
                         Biography, Drama, History
                     </div>
                 </div>
@@ -111,7 +112,7 @@
                     <div class="section_title">
                         Description:
                     </div>
-                    <div class="section_content">                     
+                    <div id="description" class="section_content">                     
                         The story of American scientist J. Robert Oppenheimer and his role in the development of the atomic bomb.
                     </div>
                 </div>

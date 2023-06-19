@@ -161,7 +161,7 @@ exports.getMoviesByName = (req, res) => {
   const { name } = req.params;
   const moviesByName = movieData.find((movie) => movie.name.toLowerCase() === name.toLowerCase());
 
-  if (moviesByName.length === 0) {
+  if (moviesByName === '') {
     return res.status(404).json({ error: 'No movies found with the given name' });
   }
 

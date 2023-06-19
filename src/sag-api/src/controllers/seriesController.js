@@ -126,7 +126,7 @@ exports.getSeriesByName = (req, res) => {
   const { name } = req.params;
   const seriesByName = seriesData.filter((series) => series.name.toLowerCase() === name.toLowerCase());
 
-  if (seriesByName.length === 0) {
+  if (seriesByName === '') {
     return res.status(404).json({ error: 'No series found with the given name' });
   }
 

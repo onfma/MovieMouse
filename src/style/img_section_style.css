@@ -57,6 +57,28 @@ figure {
   align-self: stretch;
   flex-grow: 0;
 }
+
+.image_caption_text .hoverBox {
+  visibility: hidden;
+  width: 25%;
+  background-color: #7f0625;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding-bottom: 5px;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.image_caption_text:hover .hoverBox {
+  visibility: visible;
+  opacity: 1;
+}
+
 .image_caption_date{
   padding-top: 6px;
   padding-right: 6px;
