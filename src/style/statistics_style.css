@@ -1,0 +1,54 @@
+.statisticsContainer {
+    display: flex;
+}
+
+.stataisticsConatiner #pieChart {
+    width: 450px;
+    height: 450px;
+    float: right;
+    flex: 1;
+    margin-right: 10%;
+    margin-top: 30px;
+}
+.pieChart-tooltip {
+    white-space: pre-line;
+}
+
+.stataisticsConatiner .section_title{
+    order: 1; 
+    padding-left: 11%; 
+    padding-top: 50px; 
+    margin-bottom: -120px;
+}
+
+#tableContainer {
+    padding: 20px;
+    background-color: #FFF2EE;
+    padding-left: 10%;
+    padding-top: 10%;
+    margin-right: -50px;
+    float: left;
+    flex: 1;
+}
+.nominationTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: font1;
+    font-style: normal;
+}
+
+.nominationTable th,
+.nominationTable td {
+    border: 1px solid #BE123C;
+    border-color: #6e0923;
+    padding: 8px;
+}
+
+.won {
+    background-color: #ffa184;
+  }
+  
+  .not-won {
+    background-color: #FFF2EE;
+  }
+  

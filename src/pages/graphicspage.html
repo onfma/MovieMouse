@@ -88,55 +88,80 @@
     }
     </script>
 
-  <div class="pageContent_1" style="margin-top: 800px;  width: auto;">
-    <div class="pageSection" style=" width: 98vw;">
-      <div class="pageContent_imgSection" style="height: 1700px;">
-        <div class="title_imgSection">
-          <div class="title">SAG Data</div>
-        </div>
-        <div class="tableContainer" style="margin-left: -5px;">
-          <div class="input-row">
-            <div class="input-group">
-              <label for="yearFilter" style="font-family: font1;">Edition:</label>
-              <div class="autocomplete">
-                <input id="yearFilter" type="text" placeholder="Filter by year">
-                <div id="yearDropdown" class="autocomplete-items"></div>
+    <div class="pageContent" style="top:25vw;">
+
+      <div class="pageContent_1" style="margin-top: 400px;  width: auto;">
+        <div class="pageSection" style=" width: 100vw;">
+          <div class="pageContent_imgSection">
+            <div class="title_imgSection">
+              <div class="title">SAG Data</div>
+            </div>
+            <div class="tableContainer" style="margin-left: -5px;">
+              <div class="input-row">
+                <div class="input-group">
+                  <label for="yearFilter" style="font-family: font1;">Edition:</label>
+                  <div class="autocomplete">
+                    <input id="yearFilter" type="text" placeholder="Filter by year">
+                    <div id="yearDropdown" class="autocomplete-items"></div>
+                  </div>
+                </div>
+                <div class="input-group">
+                  <label for="categoryFilter" style="font-family: font1;">Category:</label>
+                  <div class="autocomplete">
+                    <input id="categoryFilter" type="text" placeholder="Filter by Category">
+                    <div id="categoryDropdown" class="autocomplete-items"></div>
+                  </div>
+                </div>
+                <div class="input-group">
+                  <label for="fullNameFilter" style="font-family: font1;">Full Name:</label>
+                  <div class="autocomplete">
+                    <input id="fullNameFilter" type="text" placeholder="Filter by Full Name">
+                    <div id="fullNameDropdown" class="autocomplete-items"></div>
+                  </div>
+                </div>
+                <div class="input-group">
+                  <label for="showFilter" style="font-family: font1;">Show:</label>
+                  <div class="autocomplete">
+                    <input id="showFilter" type="text" placeholder="Filter by Show">
+                    <div id="showDropdown" class="autocomplete-items"></div>
+                  </div>
+                </div>
+                <div class="input-group">
+                  <button class="seeAwardsButtons" id="applyFilterBtn">Apply Filter</button>
+                </div>
+              </div>
+              <div id="tableNavigationContainer"></div>
+              <div class="pagination">
+                <button class="navBtn" id="prevPageBtn" disabled></button>
+                <span id="currentPage"></span>
+                <button class="navBtn" id="nextPageBtn">></button>
+                <button id="downloadCSV">Download CSV</button>
               </div>
             </div>
-            <div class="input-group">
-              <label for="categoryFilter" style="font-family: font1;">Category:</label>
-              <div class="autocomplete">
-                <input id="categoryFilter" type="text" placeholder="Filter by Category">
-                <div id="categoryDropdown" class="autocomplete-items"></div>
-              </div>
-            </div>
-            <div class="input-group">
-              <label for="fullNameFilter" style="font-family: font1;">Full Name:</label>
-              <div class="autocomplete">
-                <input id="fullNameFilter" type="text" placeholder="Filter by Full Name">
-                <div id="fullNameDropdown" class="autocomplete-items"></div>
-              </div>
-            </div>
-            <div class="input-group">
-              <label for="showFilter" style="font-family: font1;">Show:</label>
-              <div class="autocomplete">
-                <input id="showFilter" type="text" placeholder="Filter by Show">
-                <div id="showDropdown" class="autocomplete-items"></div>
-              </div>
-            </div>
-            <div class="input-group">
-              <button class="seeAwardsButtons" id="applyFilterBtn">Apply Filter</button>
-            </div>
-          </div>
-          <div id="tableNavigationContainer"></div>
-          <div class="pagination">
-            <button class="navBtn" id="prevPageBtn" disabled></button>
-            <span id="currentPage"></span>
-            <button class="navBtn" id="nextPageBtn">></button>
           </div>
         </div>
       </div>
+ <!-- FOOTER -->
+      <div class="pageContent_footer" style="top:320%;">
+        <footer>
+          <div class="top-bar"></div>
+          <br>
+              <ul class="footer-ul">
+                  <li class="footer-li"><a href="https://twitter.com/MovieMouse" class="footer-icon footer-icon-anim"><i class="fa fa-twitter"></i></a></li>
+                  <li class="footer-li"><a href="https://www.facebook.com/MovieMouse" class="footer-icon footer-icon-anim"><i class="fa fa-facebook"></i></a></li>
+                  <li class="footer-li"><a href="https://www.instagram.com/MovieMouse" class="footer-icon footer-icon-anim"><i class="fa fa-instagram"></i></a></li>
+                  <li class="footer-li"><a href="https://www.youtube.com/channel/MovieMouse" class="footer-icon footer-icon-anim"><i class="fa fa-youtube"></i></a></li>
+              </ul>
+              <ul class="footer-ul">
+                  <li class="footer-li"><a href="conditionspage.html#conditions_of_use" class="footer-text">Conditions of Use</a></li>
+                  <li class="footer-li"><a href="conditionspage.html#privacy_&_policy" class="footer-text">Privacy & Policy</a></li>
+                  <li class="footer-li"><a href="conditionspage.html#press_room" class="footer-text">Press Room</a></li>
+              </ul>
+              <ul class="footer-ul">
+                  <li class="footer-li">&copy 2023 MovieMouse by Apostol Iustina & Onofrei Maria</li>
+              </ul>
+        </footer>
+      </div>
     </div>
-  </div>
   </body>
 </html>

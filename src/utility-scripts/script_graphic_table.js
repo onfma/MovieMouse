@@ -13,6 +13,7 @@ const fetchData = async () => {
         }
         return obj;
       });
+      var filteredData;
   
       const itemsPerPage = 10;
       let currentPage = 1;
@@ -96,11 +97,18 @@ const fetchData = async () => {
         const nextButton = document.createElement('button');
         nextButton.id = 'nextPageBtn';
         nextButton.textContent = '>';
+
+        const downloadButton = document.createElement('button');
+        downloadButton.id = 'downloadCSV';
+        downloadButton.textContent = 'Download CSV';
+
         paginationContainer.appendChild(prevButton);
         paginationContainer.appendChild(currentPageSpan);
         paginationContainer.appendChild(nextButton);
+        paginationContainer.appendChild(downloadButton);
         const newPrevPageBtn = document.getElementById('prevPageBtn');
         const newNextPageBtn = document.getElementById('nextPageBtn');
+        const downloadBtn = document.getElementById("downloadCSV");
   
         newPrevPageBtn.disabled = currentPage === 1;
         newNextPageBtn.disabled = currentPage === totalPages;
@@ -119,6 +127,24 @@ const fetchData = async () => {
           newPrevPageBtn.disabled = false;
           newNextPageBtn.disabled = currentPage === totalPages;
           updatePageCounter();
+        });
+
+        downloadBtn.addEventListener('click', () => {
+          const categoryFilterValue = document.getElementById('categoryFilter').value;
+          const fullNameFilterValue = document.getElementById('fullNameFilter').value;
+          const yearFilterValue = document.getElementById('yearFilter').value;
+          const showFilterValue = document.getElementById('showFilter').value;
+        
+          const filteredData = data.filter(rowData => {
+            const categoryMatches = (categoryFilterValue === '') || (rowData.category && (rowData.category.toLowerCase().includes(categoryFilterValue.toLowerCase()) || rowData.category.toLowerCase() === categoryFilterValue.toLowerCase()));
+            const fullNameMatches = (fullNameFilterValue === '') || rowData.full_name && (rowData.full_name.toLowerCase().includes(fullNameFilterValue.toLowerCase()) || rowData.full_name.toLowerCase() === fullNameFilterValue.toLowerCase());
+            const yearMatches = (yearFilterValue === '') || rowData.year && (rowData.year.toLowerCase().includes(yearFilterValue.toLowerCase()) || rowData.year.toLowerCase() === yearFilterValue.toLowerCase());
+            const showMatches = (showFilterValue === '') || rowData.show && (rowData.show.toLowerCase().includes(showFilterValue.toLowerCase()) || rowData.show.toLowerCase() === showFilterValue.toLowerCase());
+        
+            return categoryMatches && fullNameMatches && yearMatches && showMatches;
+          });
+          const csvContent = convertToCSV(filteredData);
+          downloadCSV("SAG-data.csv", csvContent);
         });
   
         updatePageCounter();
@@ -263,6 +289,7 @@ const fetchData = async () => {
             closeAllLists();
           }
         });
+
       };
       const categoryInput = document.getElementById('categoryFilter');
       const fullNameInput = document.getElementById('fullNameFilter');
@@ -291,4 +318,21 @@ const fetchData = async () => {
   };
   
   fetchData();
-  
+
+const convertToCSV = (data) => {
+  const header = Object.keys(data[0]).join(",");
+  const rows = data.map((row) => Object.values(row).join(","));
+  return header + "\n" + rows.join("\n");
+};
+
+const downloadCSV = (filename, csvContent) => {
+  const element = document.createElement("a");
+  const encodedURI = encodeURI(csvContent);
+  element.setAttribute("href", "data:text/csv;charset=utf-8," + encodedURI);
+  element.setAttribute("download", filename);
+  element.style.display = "none";
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
+};
+

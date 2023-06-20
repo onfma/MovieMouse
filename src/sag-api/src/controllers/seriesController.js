@@ -8,7 +8,7 @@ function loadSeriesData() {
     fs.createReadStream('./sag-api/data/screen_actor_guild_awards.csv')
       .pipe(csv())
       .on('data', (row) => {
-        if (row.category.toLowerCase().includes('series')&&row.full_name.toLowerCase().length==0) {
+        if (row.category.toLowerCase().includes('series')&&row.full_name.toLowerCase().length==0&& !(row.category.toLowerCase().includes('male') || row.category.toLowerCase().includes('female'))) {
           const [year, edition] = row.year.split(' - ');
           const seriesName = row.show;
 

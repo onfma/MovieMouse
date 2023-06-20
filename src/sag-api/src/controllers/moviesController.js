@@ -10,7 +10,7 @@ function loadMoviesData() {
       fs.createReadStream('./sag-api/data/screen_actor_guild_awards.csv')
         .pipe(csv())
         .on('data', (row) => {
-          if (row.category.toLowerCase().includes('motion picture')) {
+          if (row.category.toLowerCase().includes('motion picture') && !(row.category.toLowerCase().includes('male') || row.category.toLowerCase().includes('female'))) {
             const [year, edition] = row.year.split(' - ');
             const movieName = row.show.trim();
             const full_name = row.full_name.trim();

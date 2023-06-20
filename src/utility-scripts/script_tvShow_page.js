@@ -77,4 +77,76 @@ window.addEventListener("DOMContentLoaded", async function () {
             }
         }
     }
+    else{
+        window.location.href = "../pages/404errorpage.html";
+    }
+    const showName = searchValue;
+    const apiUrl = `http://localhost:3000/series/name/${encodeURIComponent(showName)}`;
+    const response1 = await fetch(apiUrl);
+    const data = await response1.json();
+    if(data.length === 0){
+      window.location.href = "../pages/404errorpage.html";
+    }
+    const nominations = data[0].nominations;
+    const nominationCount = data[0].nominationCount - data[0].winCount;
+    const winCount = data[0].winCount;
+  
+    const tableContainer = document.getElementById("tableContainer");
+  
+    const table = document.createElement("table");
+    table.classList.add("nominationTable");
+    const headerRow = document.createElement("tr");
+  
+    Object.keys(nominations[0]).forEach((field) => {
+      const headerCell = document.createElement("th");
+      headerCell.textContent = field;
+      headerRow.appendChild(headerCell);
+    });
+  
+    table.appendChild(headerRow);
+  
+    nominations.forEach((nomination) => {
+      const dataRow = document.createElement("tr");
+      
+      if (nomination.won === "True") {
+        dataRow.classList.add("won");
+      } else {
+        dataRow.classList.add("not-won");
+      }
+      
+      Object.values(nomination).forEach((value) => {
+        const dataCell = document.createElement("td");
+        dataCell.textContent = value;
+        dataRow.appendChild(dataCell);
+      });
+      
+      table.appendChild(dataRow);
+    });
+    tableContainer.appendChild(table);
+    
+    const pieChartCanvas = document.getElementById("pieChart");
+    const pieChart = new Chart(pieChartCanvas, {
+      type: "pie",
+      data: {
+        labels: ["Nominations", "Wins"],
+        datasets: [
+          {
+            data: [nominationCount, winCount],
+            borderColor: "#FFF2EE",
+            backgroundColor: ["#74BDCB", "#ffa184"],
+          },
+        ],
+      },
+      options: {
+        responsive: false,
+        maintainAspectRatio: false,
+        width: 500, 
+        height: 500,
+        plugins: {
+            legend: {
+              position: 'left',
+            }
+        }
+    }
+    });
 });

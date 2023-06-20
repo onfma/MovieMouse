@@ -13,11 +13,13 @@
     <link rel="stylesheet" href="../style/conditions_text_style.css">
     <link rel="stylesheet" href="../style/templates_style.css">
     <link rel="stylesheet" href="../style/img_section_style.css">
+    <link rel="stylesheet" href="../style/statistics_style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script src="../scripts/script_general.js" defer></script>
     <script src="../scripts/script_up_button.js" defer></script>
     <script src="../utility-scripts/script_actor_page.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <title>MovieMouse - Actor name</title>
     <link rel="shortcut icon" href="../materiale/soricel.ico" type="image/x-icon">
@@ -159,14 +161,19 @@
             </div>
         </div>
         <!-- STATISTICI -->
-        <div>
-
+        <div class="stataisticsConatiner" height = "auto">
+            <div class="section_title">
+                SAG awards:
+            </div>
+            <div id = "tableContainer"></div>
+            <canvas id="pieChart"></canvas>
+            <canvas id="lineChart"></canvas>
         </div>
         </div>
 
               
         <!-- FOOTER -->
-        <div class="pageContent_footer" style="top:120vw;">
+        <div class="pageContent_footer" style="top:420%;">
         <footer>
           <div class="top-bar"></div>
           <br>

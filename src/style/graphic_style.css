@@ -50,8 +50,21 @@
     justify-content: left;
     margin-top: 20px;
   }
-  
-  .pagination button {
+
+  #downloadCSV{
+    width: 130px;
+    float: right;
+    margin-left: 80%;
+    font-size: 16px;
+    height: 30px;
+    background-color: #e9c5a9; 
+    border: 1px solid transparent;
+    border-radius: 5px;
+  }
+  #downloadCSV:hover {
+    background-color: #caab92; 
+  }
+  button {
     margin: 0 5px;
     height: 30px;
     width: 30px;
@@ -59,7 +72,7 @@
     border: 1px solid transparent;
     border-radius: 5px;
   }
-  .pagination button:hover {
+  button:hover {
     background-color: #caab92; 
   }
   .pagination span {
