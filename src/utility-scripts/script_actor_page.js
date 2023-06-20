@@ -66,9 +66,10 @@ window.addEventListener("DOMContentLoaded", async function () {
             if (description.length > 70) {
               const truncatedDescription = description.substring(0, 75) + "...";
               captionText.textContent = truncatedDescription;
-              const hoverBox = document.createElement("span");
+              const hoverBox = document.createElement("textarea");
               hoverBox.classList.add("hoverBox");
-              hoverBox.textContent = description;
+              hoverBox.readOnly = true;
+              hoverBox.value = description;
               captionText.appendChild(hoverBox);
             } else {
               captionText.textContent = description;

@@ -18,9 +18,6 @@ window.addEventListener("DOMContentLoaded", async function () {
         const movieName = document.getElementById("movieName");
         movieName.textContent = movieData.title;
     
-        const director = document.getElementById("director");
-        director.textContent = "";
-    
         const year = document.getElementById("year");
         year.textContent = movieData.release_date.substring(0, 4);
     
@@ -42,6 +39,14 @@ window.addEventListener("DOMContentLoaded", async function () {
         const creditsEndpoint = `https://api.themoviedb.org/3/movie/${movieData.id}/credits?api_key=${apiKey}`;
         const creditsResponse = await fetch(creditsEndpoint);
         const creditsData = await creditsResponse.json();
+
+        const directorData = creditsData.crew
+        .filter((crewMember) => crewMember.job === "Director")
+        .map((director) => director.name)
+        .join(", ");
+        const director = document.getElementById("director");
+        director.textContent = directorData;
+    
     
         const popularCast = creditsData.cast.slice(0, 4);
     
@@ -58,7 +63,7 @@ window.addEventListener("DOMContentLoaded", async function () {
             const name = person.name;
             let knownForDepartment = person.known_for_department;
             if (knownForDepartment === "Acting") {
-                knownForDepartment = knownForDepartment + ": " + person.character;
+                knownForDepartment = knownForDepartment + " as " + person.character;
             }
 
             image.src = `https://image.tmdb.org/t/p/w500${profilePath}`;

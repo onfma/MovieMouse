@@ -60,18 +60,20 @@ figure {
 
 .image_caption_text .hoverBox {
   visibility: hidden;
-  width: 25%;
+  position: relative;
+  width: 120%;
+  height: 110px;
+  bottom: 100%;
+  left: 120px;
+  transform: translateX(-50%);
+  padding: 5px;
   background-color: #7f0625;
   color: #fff;
-  text-align: center;
+  text-align: left;
   border-radius: 6px;
-  padding-bottom: 5px;
   z-index: 1;
-  bottom: 100%;
-  left: 50%;
-  margin-left: -60px;
   opacity: 0;
-  transition: opacity 1s;
+  transition: opacity 0.3s;
 }
 
 .image_caption_text:hover .hoverBox {
