@@ -19,10 +19,13 @@ function trendingAll() {
         img.alt = movie.title;
 
         const captionDate = imageColumn.querySelector('.image_caption_date');
-        captionDate.textContent = movie.release_date;
+        if(movie.release_date != null) captionDate.textContent = movie.release_date;
+        else captionDate.textContent += movie.first_air_date;
 
         const captionTitle = imageColumn.querySelector('.image_caption_title');
-        captionTitle.textContent = movie.title;
+        if(movie.name != null) captionTitle.textContent = movie.name;
+        else captionTitle.textContent = movie.title;
+        
 
         const captionText = imageColumn.querySelector('.image_caption_text');
         const overview = movie.overview;
