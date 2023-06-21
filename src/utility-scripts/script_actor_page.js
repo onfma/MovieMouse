@@ -17,6 +17,9 @@ window.addEventListener("DOMContentLoaded", async function () {
   const creditsResponse = await fetch(creditsEndpoint);
   credits = await creditsResponse.json();
 
+  const mostPopularFeatures = credits.cast.sort((a, b) => b.popularity - a.popularity).filter((item) => item.media_type === 'movie').slice(0, 8);
+
+
   if (searchData.results && searchData.results.length > 0) {
 
     const personEndpoint = `https://api.themoviedb.org/3/person/${personId}?api_key=${apiKey}`;
@@ -53,39 +56,46 @@ window.addEventListener("DOMContentLoaded", async function () {
 
     const images = document.querySelectorAll('.image_column img');
 
+    const shuffledFeatures = mostPopularFeatures.sort(() => 0.5 - Math.random());
+    const randomFeatures = shuffledFeatures.slice(0, 4);
     for (let i = 0; i < images.length; i++) {
       const image = images[i];
       const captionTitle = image.nextElementSibling;
       const captionText = captionTitle.nextElementSibling;
     
-        if (personQueryData.known_for && personQueryData.known_for.length > i) {
-          const knownForItem = personQueryData.known_for[i];
-          const posterPath = knownForItem.poster_path;
-          const title = knownForItem.title;
-          const description = knownForItem.overview;
-    
-          image.src = `https://image.tmdb.org/t/p/w500${posterPath}`;
-          image.alt = title;
-    
-          if (captionTitle && captionText) {
-            captionTitle.textContent = title;
-            if (description.length > 70) {
-              const truncatedDescription = description.substring(0, 75) + "...";
-              captionText.textContent = truncatedDescription;
-              const hoverBox = document.createElement("div");
-              hoverBox.classList.add("hoverBox");
-              hoverBox.textContent = description;
-              captionText.appendChild(hoverBox);
-            } else {
-              captionText.textContent = description;
-            }
-          }
-          image.style.display = 'block';
-          image.parentElement.style.display = 'block';
-        } else {
-          image.style.display = 'none';
-          image.parentElement.style.display = 'none';
+      if (randomFeatures.length > i) {
+        const feature = randomFeatures[i];
+        const posterPath = feature.poster_path;
+        let title;
+        if (feature.media_type === "movie") {
+          title = feature.title;
+        } else if (feature.media_type === "tv") {
+          title = feature.name;
         }
+        const description = feature.overview;
+    
+        image.src = `https://image.tmdb.org/t/p/w500${posterPath}`;
+        image.alt = title;
+    
+        if (captionTitle && captionText) {
+          captionTitle.textContent = title;
+          if (description.length > 70) {
+            const truncatedDescription = description.substring(0, 75) + "...";
+            captionText.textContent = truncatedDescription;
+            const hoverBox = document.createElement("div");
+            hoverBox.classList.add("hoverBox");
+            hoverBox.textContent = description;
+            captionText.appendChild(hoverBox);
+          } else {
+            captionText.textContent = description;
+          }
+        }
+        image.style.display = "block";
+        image.parentElement.style.display = "block";
+      } else {
+        image.style.display = "none";
+        image.parentElement.style.display = "none";
+      }
     }
   }
   else{

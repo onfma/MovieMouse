@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script src="../utility-scripts/script_graphic_table.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <title>MovieMouse - InfoGraphics</title>
     <link rel="shortcut icon" href="../materiale/soricel.ico" type="image/x-icon">
@@ -59,13 +60,10 @@
 
 <!--SCRIPTS -->
     <script>
-      /* When the user clicks on the button, 
-      toggle between hiding and showing the dropdown content */
       function DropdownFunction() {
         document.getElementById("myDropdown").classList.toggle("show");
       }
       
-      // Close the dropdown if the user clicks outside of it
       window.onclick = function(event) {
       if (!event.target.matches('.sideMenuButton')) {
         var dropdowns = document.getElementsByClassName("dropdown-content");
@@ -91,7 +89,7 @@
     <div class="pageContent" style="top:25vw;">
 
       <div class="pageContent_1" style="margin-top: 400px;  width: auto;">
-        <div class="pageSection" style=" width: 100vw;">
+        <div class="pageSection" style=" width: 100vw; height: 500px;">
           <div class="pageContent_imgSection">
             <div class="title_imgSection">
               <div class="title">SAG Data</div>
@@ -137,6 +135,18 @@
           </div>
         </div>
       </div>
+      <div class="stataisticsConatiner"  style="padding-top: 1000px">
+          <div id="titlu2" class="section_title" style="padding-top: 100px">
+              Features and popularity:
+          </div>
+          <div class="chartConatiner" style="width:80%; float: left; margin-left: 10%">
+              <canvas id="MovieBarChart" ></canvas>
+          </div>
+      </div>
+
+
+    </div>
+      
  <!-- FOOTER -->
       <div class="pageContent_footer" style="top:320%;">
         <footer>
@@ -158,6 +168,5 @@
               </ul>
         </footer>
       </div>
-    </div>
   </body>
 </html>
