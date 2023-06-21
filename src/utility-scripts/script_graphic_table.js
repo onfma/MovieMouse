@@ -338,41 +338,43 @@ const downloadCSV = (filename, csvContent) => {
 
 window.addEventListener("DOMContentLoaded", async function () {
 
-  const apiUrl = `http://localhost:3000/movies`;
-  const response = await fetch(apiUrl);
+  let apiUrl = `http://localhost:3000/movies`;
+  let response = await fetch(apiUrl);
   let movieData = await response.json();
 
-  movieData = movieData.sort((a, b) => b.nominationCount - a.nominationCount).slice(0, 7);
+  movieData = movieData.sort((a, b) => b.nominationCount - a.nominationCount).slice(0, 7).sort((a, b) => b.winCount - a.winCount).sort((a, b) => b.nominationCount - a.nominationCount);
   movieNames = movieData.map((item) => {
-    return item.name;
+    return  item.name ;
   });
   movieNominations = movieData.map((item) => {
     return item.nominationCount;
   });
+  movieWins = movieData.map((item) => {
+    return item.winCount;
+  });
 
 
-  const data = {
+  let data = {
     labels: movieNames,
     datasets: [{
-      label: 'My First Dataset',
       data: movieNominations,
       backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(255, 159, 64, 0.2)',
-        'rgba(255, 205, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(201, 203, 207, 0.2)'
+        'rgba(38, 70, 83, 0.5)',
+        'rgba(42, 157, 143, 0.5)',
+        'rgba(233, 196, 106, 0.5)',
+        'rgba(244, 162, 97, 0.5)',
+        'rgba(231, 111, 81, 0.5)',
+        'rgba(236, 140, 116, 0.5)',
+        'rgba(240, 163, 144, 0.5)'
       ],
       borderColor: [
-        'rgb(255, 99, 132)',
-        'rgb(255, 159, 64)',
-        'rgb(255, 205, 86)',
-        'rgb(75, 192, 192)',
-        'rgb(54, 162, 235)',
-        'rgb(153, 102, 255)',
-        'rgb(201, 203, 207)'
+        'rgba(38, 70, 83)',
+        'rgba(42, 157, 143)',
+        'rgba(233, 196, 106)',
+        'rgba(244, 162, 97)',
+        'rgba(231, 111, 81)',
+        'rgba(236, 140, 116)',
+        'rgba(240, 163, 144)'
       ],
       borderWidth: 1
     }]
@@ -385,9 +387,110 @@ window.addEventListener("DOMContentLoaded", async function () {
     options: {
       scales: {
         y: {
-          beginAtZero: true
+          beginAtZero: true,
+          ticks: {
+            stepSize: 1,
+            max: 20
+          }
+        },
+        x: {
+          grid: {
+            display: false 
+          }
+        }
+      },
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              var index = context.dataIndex;
+              return "Wins" + ': ' + movieWins[index] + " out of " + movieNominations[index];
+            }
+          }
+        },
+        legend: {
+          display: false 
         }
       }
     },
+  
+  });
+
+  apiUrl = `http://localhost:3000/actors`;
+  response = await fetch(apiUrl);
+  let seriesData = await response.json();
+
+  seriesData = seriesData.sort((a, b) => b.nominationCount - a.nominationCount).slice(0, 7).sort((a, b) => b.winCount - a.winCount).sort((a, b) => b.nominationCount - a.nominationCount);
+  seriesNames = seriesData.map((item) => {
+    return item.name;
+  });
+  seriesNominations = seriesData.map((item) => {
+    return item.nominationCount;
+  });
+  seriesWins = seriesData.map((item) => {
+    return item.winCount;
+  });
+
+
+
+  data = {
+    labels: seriesNames,
+    datasets: [{
+      data: seriesNominations,
+      backgroundColor: [
+        'rgba(136, 53, 43, 0.5)',
+        'rgba(208, 117, 92, 0.5)',
+        'rgba(235, 206, 177, 0.5)',
+        'rgba(238, 233, 222, 0.5)',
+        'rgba(146, 148, 137, 0.5)',
+        'rgba(121, 129, 135, 0.5)',
+        'rgba(87, 97, 105, 0.5)'
+      ],
+      borderColor: [
+        'rgba(136, 53, 43)',
+        'rgba(208, 117, 92)',
+        'rgba(235, 206, 177)',
+        'rgba(238, 233, 222)',
+        'rgba(146, 148, 137, 0.7)',
+        'rgba(121, 129, 135)',
+        'rgba(87, 97, 105, 0.7)'
+      ],
+      borderWidth: 1
+    }]
+  };
+
+  var chrt = document.getElementById("SeriesBarChart").getContext("2d");
+  var chartId = new Chart(chrt, {
+    type: 'bar',
+    data: data,
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            stepSize: 5 
+          }
+        },
+        x: {
+          grid: {
+            display: false 
+          }
+        }
+      },
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              var index = context.dataIndex;
+              return "Wins" + ': ' + seriesWins[index] + " out of " + seriesNominations[index];
+            }
+          }
+        },
+        legend: {
+          display: false
+        }
+      }
+    },
+  
   });
 });

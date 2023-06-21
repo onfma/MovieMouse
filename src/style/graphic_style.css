@@ -174,3 +174,15 @@
   #applyFilterBtn:hover {
     background-color: #b89a84;
   }
+
+  .section_title{
+    font-family: font1;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 60px;
+    padding-top: 100px;
+    padding-right: 100px;
+    margin-left: 100px;
+
+    color: #000000;
+}
