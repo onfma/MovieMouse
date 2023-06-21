@@ -14,11 +14,16 @@
     white-space: pre-line;
 }
 
-.stataisticsConatiner .section_title{
+.stataisticsConatiner #titlu1{
     order: 1; 
     padding-left: 11%; 
     padding-top: 50px; 
     margin-bottom: -120px;
+}
+.stataisticsConatiner #titlu2{
+    order: 1; 
+    padding-left: 11%; 
+    margin-top: 300px;
 }
 
 #tableContainer {

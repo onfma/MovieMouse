@@ -5,18 +5,24 @@ window.addEventListener("DOMContentLoaded", async function () {
   const searchEndpoint = `https://api.themoviedb.org/3/search/person?api_key=${apiKey}&query=${encodeURIComponent(searchValue)}`;
   const response = await fetch(searchEndpoint);
   const searchData = await response.json();
+  let personData = searchData.results[0];
+
+  personQueryData = searchData.results.reduce((prev, current) => {
+    return (current.popularity > prev.popularity) ? current : prev;
+  });
+  const personId = personQueryData.id;
+  console.log(personId);
+
+  const creditsEndpoint = `https://api.themoviedb.org/3/person/${personId}/combined_credits?api_key=${apiKey}`;
+  const creditsResponse = await fetch(creditsEndpoint);
+  credits = await creditsResponse.json();
 
   if (searchData.results && searchData.results.length > 0) {
-    let personData = searchData.results[0];
 
-    personQueryData = searchData.results.reduce((prev, current) => {
-      return (current.popularity > prev.popularity) ? current : prev;
-    });
-
-    const personId = personQueryData.id;
     const personEndpoint = `https://api.themoviedb.org/3/person/${personId}?api_key=${apiKey}`;
     const personResponse = await fetch(personEndpoint);
     personData = await personResponse.json();
+    
 
     const actorName = document.getElementById("actorName");
     actorName.textContent = personData.name;
@@ -155,4 +161,97 @@ window.addEventListener("DOMContentLoaded", async function () {
   }
   });
 
+
+  const movieData = credits.cast && credits.cast.length > 0 ? credits.cast
+    .filter((item) => item.media_type === 'movie')
+    .map((item) => {
+        if (item.release_date && typeof item.release_date === 'string') {
+          const time = parseInt(item.release_date.split("-")[0]) + parseInt(item.release_date.split("-")[1]) / 12;
+            return {
+                x: time,
+                y: item.popularity,
+                mediaType: item.media_type,
+                title: item.title
+            };
+        }
+        return null;
+  }).filter(Boolean) : [];
+
+  const tvData = credits.cast && credits.cast.length > 0 ? credits.cast
+    .filter((item) => item.media_type === 'tv' && item.name != "The View"  && item.name != "The Oscars")
+    .map((item) => {
+        if (item.first_air_date && typeof item.first_air_date === 'string') {
+          const time = parseInt(item.first_air_date.split("-")[0]) + parseInt(item.first_air_date.split("-")[1]) / 12;
+            return {
+                x: time,
+                y: item.popularity,
+                mediaType: item.media_type,
+                title: item.name
+            };
+        }
+        return null;
+  }).filter(Boolean) : [];
+
+  const dataValues = {
+      datasets: [{
+          label: "Movies",
+          data: movieData,
+          pointRadius: 4,
+      }, {
+          label: "TV",
+          data: tvData,
+          pointRadius: 4,
+      }]
+  };
+
+  var chrt = document.getElementById("lineChart").getContext("2d");
+  var chartId = new Chart(chrt, {
+      type: "scatter",
+      data: dataValues,
+      options: {
+          legend: { display: true },
+          scales: {
+            x: {
+              title: {
+                display: true,
+                text: 'Year',
+                fontSize: 24
+              },
+              ticks: {
+                callback: function(value, index, ticks) {
+                    return value.toString();
+                },
+              }
+            },
+            y: {
+              title: {
+                display: true,
+                text: 'Popularity',
+                fontSize: 24
+              },
+            }
+          },
+          plugins: {
+            tooltip: {
+                callbacks: {
+                  label: function(context) {
+                    var datasetIndex = context.datasetIndex;
+                    var index = context.dataIndex;
+                    var dataset = context.chart.data.datasets[datasetIndex];
+                    var dataItem = dataset.data[index];
+                    return dataItem.title + ': ' + dataItem.y;
+                  }
+                }
+            },
+            customTicks: {
+              callbacks: {
+                  xLabel: function(value, index, ticks) {
+                      return value.toString();
+                  }
+              }
+          }
+        }
+    }
+  });
 });
+

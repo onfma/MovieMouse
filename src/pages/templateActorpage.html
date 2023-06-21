@@ -20,6 +20,7 @@
     <script src="../scripts/script_up_button.js" defer></script>
     <script src="../utility-scripts/script_actor_page.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>  -->
 
     <title>MovieMouse - Actor name</title>
     <link rel="shortcut icon" href="../materiale/soricel.ico" type="image/x-icon">
@@ -162,18 +163,24 @@
         </div>
         <!-- STATISTICI -->
         <div class="stataisticsConatiner" height = "auto">
-            <div class="section_title">
+            <div id="titlu1" class="section_title">
                 SAG awards:
             </div>
             <div id = "tableContainer"></div>
             <canvas id="pieChart"></canvas>
-            <canvas id="lineChart"></canvas>
+             
+            <div id="titlu2" class="section_title">
+                Features and popularity:
+            </div>
+            <div class="chartConatiner" style="width:80%; float: left; margin-left: 10%">
+                <canvas id="lineChart" ></canvas>
+            </div>
         </div>
         </div>
 
               
         <!-- FOOTER -->
-        <div class="pageContent_footer" style="top:420%;">
+        <div class="pageContent_footer" style="top:520%;">
         <footer>
           <div class="top-bar"></div>
           <br>
