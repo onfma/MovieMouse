@@ -41,11 +41,167 @@ db.run(`
   )
 `, (err) => {
   if (err) {
-    console.error('Error creating table:', err);
+    console.error('Error creating "accounts" table:', err);
     return;
   }
-  console.log('Table created successfully');
+  console.log('"accounts" table created successfully');
 });
+
+db.run(`
+  CREATE TABLE IF NOT EXISTS categories (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    categoryName TEXT
+  )
+`, (err) => {
+  if (err) {
+    console.error('Error creating "categories" table:', err);
+    return;
+  }
+  console.log('"categories" table created successfully');
+});
+
+db.run(`
+  CREATE TABLE IF NOT EXISTS nominations (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    idActor INTEGER,
+    idCategory INTEGER,
+    FOREIGN KEY (idActor) REFERENCES accounts (id),
+    FOREIGN KEY (idCategory) REFERENCES categories (id)
+  )
+`, (err) => {
+  if (err) {
+    console.error('Error creating "nominations" table:', err);
+    return;
+  }
+  console.log('"nominations" table created successfully');
+});
+
+db.run(`
+  CREATE TABLE IF NOT EXISTS votes (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    idUser INTEGER,
+    idActor INTEGER,
+    idCategory INTEGER,
+    FOREIGN KEY (idUser) REFERENCES accounts (id),
+    FOREIGN KEY (idActor) REFERENCES accounts (id),
+    FOREIGN KEY (idCategory) REFERENCES categories (id),
+    UNIQUE (idUser, idCategory)
+  )
+`, (err) => {
+  if (err) {
+    console.error('Error creating "votes" table:', err);
+    return;
+  }
+  console.log('"votes" table created successfully');
+});
+
+app.get('/getVoteFor/:categoryId', (req, res) => {
+  const categoryId = req.params.categoryId;
+  const userId = session.userId;
+
+  if (!session.authenticated) {
+    res.status(401).json({ error: 'User not authenticated' });
+    return;
+  }
+  db.get('SELECT * FROM votes WHERE idUser = ? AND idCategory = ?', [userId, categoryId], (err, row) => {
+    if (err) {
+      console.error('Error querying votes:', err);
+      res.status(500).json({ error: 'Internal Server Error' });
+      return;
+    }
+
+    if (row) {
+      res.json({ voted: true, vote: row.idActor });
+    } else {
+      res.json({ voted: false });
+    }
+  });
+});
+
+app.get('/getCategoryNominees/:categoryId', (req, res) => {
+  const categoryId = req.params.categoryId;
+  db.all('SELECT idActor FROM nominations WHERE idCategory = ?', [categoryId], (err, rows) => {
+    if (err) {
+      console.error('Error querying nominations:', err);
+      res.status(500).json({ error: 'Internal Server Error' });
+      return;
+    }
+    const nomineeIds = rows.map((row) => row.idActor);
+    res.json({ category: categoryId, nominees: nomineeIds });
+  });
+});
+
+const currentCategoryId = 2;
+
+app.post('/voteFor/:actorId', (req, res) => {
+  const actorId = req.params.actorId;
+  const userId = session.userId;
+  const categoryId = currentCategoryId;
+  db.get('SELECT * FROM votes WHERE idUser = ? AND idActor = ? AND idCategory = ?', [userId, actorId, categoryId], (err, row) => {
+    if (err) {
+      console.error('Error querying votes:', err);
+      res.status(500).json({ error: 'Internal Server Error' });
+      return;
+    }
+    if (row) {
+      res.status(400).json({ error: 'User has already voted for the actor in the category' });
+      return;
+    }
+    db.run('INSERT INTO votes (idUser, idActor, idCategory) VALUES (?, ?, ?)', [userId, actorId, categoryId], function (err) {
+      if (err) {
+        console.error('Error inserting vote:', err);
+        res.status(500).json({ error: 'Internal Server Error' });
+        return;
+      }
+
+      res.json({ message: 'Vote added successfully' });
+    });
+  });
+});
+
+app.get('/categoryWinner/:categoryId', (req, res) => {
+  const categoryId = req.params.categoryId;
+  db.get(
+    `SELECT idActor FROM votes WHERE idCategory = ? GROUP BY idActor ORDER BY COUNT(*) DESC LIMIT 1`,
+    [categoryId],
+    (err, row) => {
+      if (err) {
+        console.error('Error getting category winner:', err);
+        res.status(500).send('Internal Server Error');
+        return;
+      }
+      if (row) {
+        const winnerId = row.idActor;
+        res.json({ winner: winnerId });
+      } else {
+        res.send(`No winner found for category ${categoryId}`);
+      }
+    }
+  );
+});
+
+app.get('/categoryName/:categoryId', (req, res) => {
+  const categoryId = req.params.categoryId;
+
+  db.get('SELECT categoryName FROM categories WHERE id = ?', [categoryId], (err, row) => {
+    if (err) {
+      console.error('Error querying categories:', err);
+      res.status(500).json({ error: 'Internal Server Error' });
+      return;
+    }
+
+    if (row) {
+      const categoryName = row.categoryName;
+      res.json({ 
+      categoryId: categoryId,
+      categoryName: categoryName });
+    } else {
+      res.status(404).json({ error: 'Category not found' });
+    }
+  });
+});
+
+
 
 app.get('/check-authentication', (req, res) => {
   if (session.authenticated) {
