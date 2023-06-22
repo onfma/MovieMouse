@@ -29,7 +29,12 @@ function trendingMovies(){
   
         // description up to 150 characters
         if (overview.length > 150) {
-          captionText.textContent = overview.substring(0, 150) + '...';
+          const truncated = overview.substring(0, 150) + "...";
+          captionText.textContent = truncated;
+          const hoverBox = document.createElement("div");
+          hoverBox.classList.add("hoverBox");
+          hoverBox.textContent = overview;
+          captionText.appendChild(hoverBox);
         } else {
           captionText.textContent = overview;
         }

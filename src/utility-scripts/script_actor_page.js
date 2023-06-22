@@ -17,7 +17,7 @@ window.addEventListener("DOMContentLoaded", async function () {
   const creditsResponse = await fetch(creditsEndpoint);
   credits = await creditsResponse.json();
 
-  const mostPopularFeatures = credits.cast.sort((a, b) => b.popularity - a.popularity).filter((item) => item.media_type === 'movie').slice(0, 8);
+  const mostPopularFeatures = credits.cast.sort((a, b) => b.vote_average - a.vote_average).slice(0, 8);
 
 
   if (searchData.results && searchData.results.length > 0) {

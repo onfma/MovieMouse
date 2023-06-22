@@ -37,7 +37,12 @@ function trendingPeople(){
   
         // Description up to 150 characters
         if (knownFor.length > 150) {
-          captionText.textContent = knownFor.substring(0, 150) + '...';
+          const truncated = knownFor.substring(0, 150) + "...";
+          captionText.textContent = truncated;
+          const hoverBox = document.createElement("div");
+          hoverBox.classList.add("hoverBox");
+          hoverBox.textContent = knownFor;
+          captionText.appendChild(hoverBox);
         } else {
           captionText.textContent = knownFor;
         }

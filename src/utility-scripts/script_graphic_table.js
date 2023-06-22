@@ -416,7 +416,7 @@ window.addEventListener("DOMContentLoaded", async function () {
   
   });
 
-  apiUrl = `http://localhost:3000/actors`;
+  apiUrl = `http://localhost:3000/series`;
   response = await fetch(apiUrl);
   let seriesData = await response.json();
 
