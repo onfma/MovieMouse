@@ -41,10 +41,48 @@ function trendingTVShows() {
   
         const captionTitle = videoColumn.querySelector('.video_caption');
         captionTitle.textContent = show.name;
+
+        let tmdbRedirectURL;
+        captionTitle.href = `./src/pages/templateTVshowpage.html?search=${encodeURIComponent(show.name)}`;
+        tmdbRedirectURL = `https://www.themoviedb.org/tv/${show.id}`;
+
+        // Handle link click event
+        captionTitle.addEventListener('click', event => {
+          event.preventDefault(); // Prevent the default link behavior
+          const url = captionTitle.href;
+
+          testLinkValidity(url)
+            .then(valid => {
+              if (valid) {
+                window.location.href = url;
+              } else {
+                window.location.href = tmdbRedirectURL;
+              }
+            });
+        });
+
       }
     })
     .catch(error => {
       console.error('Error:', error);
+    });
+}
+
+function testLinkValidity(url) {
+  return fetch(url, { method: 'HEAD' })
+    .then(response => {
+      if (response.ok) {
+        // Link is valid
+        return true;
+      } else {
+        // Link is not valid
+        return false;
+      }
+    })
+    .catch(error => {
+      // An error occurred, link is not valid
+      console.error('Error:', error);
+      return false;
     });
 }
 

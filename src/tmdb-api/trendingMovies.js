@@ -23,10 +23,14 @@ function trendingMovies(){
   
         const captionTitle = imageColumn.querySelector('.image_caption_title');
         captionTitle.textContent = movie.title;
+
+        const linkElement = imageColumn.querySelector('.link');
+        linkElement.href = `./src/pages/templateMoviepage.html?search=${encodeURIComponent(movie.title)}`;
   
         const captionText = imageColumn.querySelector('.image_caption_text');
         const overview = movie.overview;
-  
+
+        
         // description up to 150 characters
         if (overview.length > 150) {
           const truncated = overview.substring(0, 150) + "...";
@@ -38,10 +42,43 @@ function trendingMovies(){
         } else {
           captionText.textContent = overview;
         }
+
+        // Handle link click event
+        linkElement.addEventListener('click', event => {
+          event.preventDefault(); // Prevent the default link behavior
+          const url = linkElement.href;
+
+          testLinkValidity(url)
+            .then(valid => {
+              if (valid) {
+                window.location.href = url;
+              } else {
+                window.location.href = `https://www.themoviedb.org/movie/${movie.id}`;
+              }
+            });
+        });
       }
     })
     .catch(error => {
       console.error('Error:', error);
+    });
+}
+
+function testLinkValidity(url) {
+  return fetch(url, { method: 'HEAD' })
+    .then(response => {
+      if (response.ok) {
+        // Link is valid
+        return true;
+      } else {
+        // Link is not valid
+        return false;
+      }
+    })
+    .catch(error => {
+      // An error occurred, link is not valid
+      console.error('Error:', error);
+      return false;
     });
 }
 

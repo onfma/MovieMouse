@@ -23,6 +23,10 @@ function nowPlayingMovies() {
   
         const captionTitle = imageColumn.querySelector('.image_caption_title');
         captionTitle.textContent = movie.title;
+
+        const linkElement = imageColumn.querySelector('.link');
+        linkElement.href = `./src/pages/templateMoviepage.html?search=${encodeURIComponent(movie.title)}`;
+        let tmdbRedirectURL = `https://www.themoviedb.org/movie/${movie.id}`;
   
         const captionText = imageColumn.querySelector('.image_caption_text');
         const overview = movie.overview;
@@ -38,10 +42,43 @@ function nowPlayingMovies() {
         } else {
           captionText.textContent = overview;
         }
+
+        linkElement.addEventListener('click', event => {
+          event.preventDefault(); // Prevent the default link behavior
+          const url = linkElement.href;
+
+          testLinkValidity(url)
+            .then(valid => {
+              if (valid) {
+                window.location.href = url;
+              } else {
+                window.location.href = tmdbRedirectURL;
+              }
+            });
+        });
+
       }
     })
     .catch(error => {
       console.error('Error:', error);
+    });
+}
+
+function testLinkValidity(url) {
+  return fetch(url, { method: 'HEAD' })
+    .then(response => {
+      if (response.ok) {
+        // Link is valid
+        return true;
+      } else {
+        // Link is not valid
+        return false;
+      }
+    })
+    .catch(error => {
+      // An error occurred, link is not valid
+      console.error('Error:', error);
+      return false;
     });
 }
 

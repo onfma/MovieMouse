@@ -39,8 +39,26 @@ function upcomingMovies() {
             console.error('Error:', error);
           });
 
+        let tmdbRedirectURL;
         const captionTitle = videoColumn.querySelector('.video_caption');
         captionTitle.textContent = movie.title;
+        captionTitle.href = `./src/pages/templateMoviepage.html?search=${encodeURIComponent(movie.title)}`;
+        tmdbRedirectURL = `https://www.themoviedb.org/movie/${movie.id}`;
+
+        // Handle link click event
+        captionTitle.addEventListener('click', event => {
+          event.preventDefault(); // Prevent the default link behavior
+          const url = captionTitle.href;
+
+          testLinkValidity(url)
+            .then(valid => {
+              if (valid) {
+                window.location.href = url;
+              } else {
+                window.location.href = tmdbRedirectURL;
+              }
+            });
+        });
       }
     })
     .catch(error => {

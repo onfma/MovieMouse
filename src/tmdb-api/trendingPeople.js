@@ -21,6 +21,9 @@ function trendingPeople(){
       for (let i = 0; i < trendingPeople.length; i++) {
         const person = trendingPeople[i];
         const imageColumn = imageColumns[i];
+
+        const linkElement = imageColumn.querySelector('.link');
+        linkElement.href = `./templateActorpage.html?search=${encodeURIComponent(person.name)}`;
   
         const img = imageColumn.querySelector('img');
         img.src = `https://image.tmdb.org/t/p/w500${person.profile_path}`;
@@ -46,10 +49,43 @@ function trendingPeople(){
         } else {
           captionText.textContent = knownFor;
         }
+
+        linkElement.addEventListener('click', event => {
+          event.preventDefault(); // Prevent the default link behavior
+          const url = linkElement.href;
+
+          testLinkValidity(url)
+            .then(valid => {
+              if (valid) {
+                window.location.href = url;
+              } else {
+                window.location.href = `https://www.themoviedb.org/person/${person.id}`;
+              }
+            });
+        });
+
       }
     })
     .catch(error => {
       console.error('Error:', error);
+    });
+}
+
+function testLinkValidity(url) {
+  return fetch(url, { method: 'HEAD' })
+    .then(response => {
+      if (response.ok) {
+        // Link is valid
+        return true;
+      } else {
+        // Link is not valid
+        return false;
+      }
+    })
+    .catch(error => {
+      // An error occurred, link is not valid
+      console.error('Error:', error);
+      return false;
     });
 }
 
