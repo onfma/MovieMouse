@@ -106,8 +106,6 @@ const fetchData = async () => {
         const newPrevPageBtn = document.getElementById('prevPageBtn');
         const newNextPageBtn = document.getElementById('nextPageBtn');
         const downloadBtn_CVS_table = document.getElementById("downloadCSV_table");
-        const downloadBtn_WebP_table = document.getElementById("downloadWebP_table");
-        const downloadBtn_SVG_table = document.getElementById("downloadSVG_table");
   
         newPrevPageBtn.disabled = currentPage === 1;
         newNextPageBtn.disabled = currentPage === totalPages;
@@ -146,116 +144,6 @@ const fetchData = async () => {
           downloadCSV("SAG-data.csv", csvContent);
         });
 
-        // downloadBtn_WebP_table.addEventListener('click', () => {
-        //   const categoryFilterValue = document.getElementById('categoryFilter').value;
-        //   const fullNameFilterValue = document.getElementById('fullNameFilter').value;
-        //   const yearFilterValue = document.getElementById('yearFilter').value;
-        //   const showFilterValue = document.getElementById('showFilter').value;
-        
-        //   const filteredData = data.filter(rowData => {
-        //     const categoryMatches = (categoryFilterValue === '') || (rowData.category && (rowData.category.toLowerCase().includes(categoryFilterValue.toLowerCase()) || rowData.category.toLowerCase() === categoryFilterValue.toLowerCase()));
-        //     const fullNameMatches = (fullNameFilterValue === '') || rowData.full_name && (rowData.full_name.toLowerCase().includes(fullNameFilterValue.toLowerCase()) || rowData.full_name.toLowerCase() === fullNameFilterValue.toLowerCase());
-        //     const yearMatches = (yearFilterValue === '') || rowData.year && (rowData.year.toLowerCase().includes(yearFilterValue.toLowerCase()) || rowData.year.toLowerCase() === yearFilterValue.toLowerCase());
-        //     const showMatches = (showFilterValue === '') || rowData.show && (rowData.show.toLowerCase().includes(showFilterValue.toLowerCase()) || rowData.show.toLowerCase() === showFilterValue.toLowerCase());
-        
-        //     return categoryMatches && fullNameMatches && yearMatches && showMatches;
-        //   });
-        
-        //   // Generate WebP file content
-        //   const webpContent = generateWebPContent(filteredData);
-        
-        //   // Create a Blob from the WebP content
-        //   const blob = new Blob([webpContent], { type: 'image/webp' });
-        
-        //   // Create a temporary link element to initiate the download
-        //   const linkElement = document.createElement('a');
-        //   linkElement.href = URL.createObjectURL(blob);
-        //   linkElement.download = 'data.webp';
-        
-        //   // Programmatically click the link to start the download
-        //   linkElement.click();
-        
-        //   // Clean up the temporary URL object
-        //   URL.revokeObjectURL(linkElement.href);
-        // });
-
-        downloadBtn_SVG_table.addEventListener('click', () => {
-          const categoryFilterValue = document.getElementById('categoryFilter').value;
-          const fullNameFilterValue = document.getElementById('fullNameFilter').value;
-          const yearFilterValue = document.getElementById('yearFilter').value;
-          const showFilterValue = document.getElementById('showFilter').value;
-        
-          const filteredData = data.filter(rowData => {
-            const categoryMatches = (categoryFilterValue === '') || (rowData.category && (rowData.category.toLowerCase().includes(categoryFilterValue.toLowerCase()) || rowData.category.toLowerCase() === categoryFilterValue.toLowerCase()));
-            const fullNameMatches = (fullNameFilterValue === '') || rowData.full_name && (rowData.full_name.toLowerCase().includes(fullNameFilterValue.toLowerCase()) || rowData.full_name.toLowerCase() === fullNameFilterValue.toLowerCase());
-            const yearMatches = (yearFilterValue === '') || rowData.year && (rowData.year.toLowerCase().includes(yearFilterValue.toLowerCase()) || rowData.year.toLowerCase() === yearFilterValue.toLowerCase());
-            const showMatches = (showFilterValue === '') || rowData.show && (rowData.show.toLowerCase().includes(showFilterValue.toLowerCase()) || rowData.show.toLowerCase() === showFilterValue.toLowerCase());
-        
-            return categoryMatches && fullNameMatches && yearMatches && showMatches;
-          });
-        
-          const svgContent = convertToSVG(filteredData);
-          downloadSVG("SAG-data.svg", svgContent);
-        });
-        
-        const convertToSVG = (data) => {
-          const svgWidth = 800; // Adjust the SVG width according to your needs
-          const svgHeight = 400; // Adjust the SVG height according to your needs
-        
-          const maxNomineeCount = Math.max(...data.map(row => row.Nominee_Count));
-        
-          // Calculate the width scale for the bars
-          const widthScale = svgWidth / maxNomineeCount;
-        
-          const svgNS = "http://www.w3.org/2000/svg";
-          const svgElem = document.createElementNS(svgNS, "svg");
-          svgElem.setAttribute("xmlns", svgNS);
-          svgElem.setAttribute("width", svgWidth);
-          svgElem.setAttribute("height", svgHeight);
-        
-          data.forEach((row, index) => {
-            const rectElem = document.createElementNS(svgNS, "rect");
-            rectElem.setAttribute("x", 0);
-            rectElem.setAttribute("y", index * 40);
-            rectElem.setAttribute("width", row.Nominee_Count * widthScale);
-            rectElem.setAttribute("height", 30);
-            rectElem.setAttribute("fill", "blue");
-        
-            svgElem.appendChild(rectElem);
-        
-            const textElem = document.createElementNS(svgNS, "text");
-            textElem.setAttribute("x", 10);
-            textElem.setAttribute("y", index * 40 + 20);
-            textElem.setAttribute("fill", "white");
-            textElem.textContent = row.Category;
-        
-            svgElem.appendChild(textElem);
-          });
-        
-          const serializer = new XMLSerializer();
-          const svgString = serializer.serializeToString(svgElem);
-        
-          const svgContent = `<?xml version="1.0" standalone="no"?>
-            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
-              "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-            ${svgString}`;
-        
-          return svgContent;
-        };
-        
-        
-        
-        const downloadSVG = (filename, content) => {
-          const element = document.createElement('a');
-          element.setAttribute('href', 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(content));
-          element.setAttribute('download', filename);
-          element.style.display = 'none';
-          document.body.appendChild(element);
-          element.click();
-          document.body.removeChild(element);
-        };
-        
-  
         updatePageCounter();
       };
   
@@ -489,8 +377,8 @@ window.addEventListener("DOMContentLoaded", async function () {
     }]
   };
 
-  var chrt = document.getElementById("MovieBarChart").getContext("2d");
-  var chartId = new Chart(chrt, {
+  var chrtMovie = document.getElementById("MovieBarChart").getContext("2d");
+  var chartId = new Chart(chrtMovie, {
     type: 'bar',
     data: data,
     options: {
@@ -525,6 +413,8 @@ window.addEventListener("DOMContentLoaded", async function () {
   
   });
 
+
+  //tv chart
   apiUrl = `http://localhost:3000/series`;
   response = await fetch(apiUrl);
   let seriesData = await response.json();
@@ -539,8 +429,6 @@ window.addEventListener("DOMContentLoaded", async function () {
   seriesWins = seriesData.map((item) => {
     return item.winCount;
   });
-
-
 
   data = {
     labels: seriesNames,
@@ -568,8 +456,18 @@ window.addEventListener("DOMContentLoaded", async function () {
     }]
   };
 
-  var chrt = document.getElementById("SeriesBarChart").getContext("2d");
-  var chartId = new Chart(chrt, {
+  TVbutton = document.getElementById("downloadSVG_chartTv");
+  TVbutton.onclick = () => {
+    downloadSVG_TV();
+  };
+
+  Moviebutton = document.getElementById("downloadSVG_chartMovie");
+  Moviebutton.onclick = () => {
+    downloadSVG_Movie();
+  };
+
+  var chrtTV = document.getElementById("SeriesBarChart").getContext("2d");
+  var chartId = new Chart(chrtTV, {
     type: 'bar',
     data: data,
     options: {
@@ -602,4 +500,61 @@ window.addEventListener("DOMContentLoaded", async function () {
     },
   
   });
+
+
+  const downloadSVG_TV = () => {
+    var canvasTV = document.getElementById("SeriesBarChart"); // Replace "SeriesBarChart" with the ID of your canvas element
+    var dataURL = canvasTV.toDataURL("image/png");
+  
+    var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+    svg.setAttribute("xmlns:xlink", "http://www.w3.org/1999/xlink");
+    svg.setAttribute("width", canvasTV.width);
+    svg.setAttribute("height", canvasTV.height);
+  
+    var img = document.createElementNS("http://www.w3.org/2000/svg", "image");
+    img.setAttribute("href", dataURL);
+    img.setAttribute("width", canvasTV.width);
+    img.setAttribute("height", canvasTV.height);
+    svg.appendChild(img);
+  
+    var serializer = new XMLSerializer();
+    var svgString = serializer.serializeToString(svg);
+  
+    var blob = new Blob([svgString], { type: "image/svg+xml" });
+  
+    var downloadLink = document.createElement("a");
+    downloadLink.href = URL.createObjectURL(blob);
+    downloadLink.download = "chrtTV.svg";
+  
+    downloadLink.click();
+  };
+  const downloadSVG_Movie = () => {
+    var canvasTV = document.getElementById("MovieBarChart"); // Replace "SeriesBarChart" with the ID of your canvas element
+    var dataURL = canvasTV.toDataURL("image/png");
+  
+    var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+    svg.setAttribute("xmlns:xlink", "http://www.w3.org/1999/xlink");
+    svg.setAttribute("width", canvasTV.width);
+    svg.setAttribute("height", canvasTV.height);
+  
+    var img = document.createElementNS("http://www.w3.org/2000/svg", "image");
+    img.setAttribute("href", dataURL);
+    img.setAttribute("width", canvasTV.width);
+    img.setAttribute("height", canvasTV.height);
+    svg.appendChild(img);
+  
+    var serializer = new XMLSerializer();
+    var svgString = serializer.serializeToString(svg);
+  
+    var blob = new Blob([svgString], { type: "image/svg+xml" });
+  
+    var downloadLink = document.createElement("a");
+    downloadLink.href = URL.createObjectURL(blob);
+    downloadLink.download = "chrtTV.svg";
+  
+    downloadLink.click();
+  };
+  
 });

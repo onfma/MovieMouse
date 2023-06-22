@@ -290,6 +290,16 @@ window.addEventListener("DOMContentLoaded", async function () {
   });
 });
 
+button = document.getElementById("downloadWebP");
+button.onclick= () => {
+  chrt = document.getElementById("lineChart");
+  var dataURL = chrt.toDataURL("image/webp");
+  var downloadLink = document.createElement("a");
+  downloadLink.href = dataURL;
+  downloadLink.download = "features.webp";
+  downloadLink.click();
+};
+
 function testLinkValidity(url) {
   return fetch(url, { method: 'HEAD' })
     .then(response => {
