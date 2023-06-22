@@ -27,11 +27,19 @@ async function checkAuthentication() {
   
 function displayNotLoggedInMessage() {
     const bodyElement = document.querySelector('html');
-    bodyElement.innerHTML = '<body style="background-color: black;"><p style="color: green;">>>You are not logged in.</p></body>';
+    bodyElement.innerHTML = `
+      <body style="background-color: black;">
+        <p style="color: green;">>>You are not logged in.</p>
+        <p style="color: green;">Please <a href="./loginpage.html">login</a> to continue.</p>
+      </body>`;
   }
   
 function displayLoggedInMessage() {
     const bodyElement = document.querySelector('html');
-    bodyElement.innerHTML = '<body style="background-color: black;"><p style="color: green;">>>You are alredy logged in.</p></body>';
+    bodyElement.innerHTML = `
+      <body style="background-color: black;">
+        <p style="color: green;">>>You are alredy logged in.</p>
+        <p style="color: green;">Redirect to <a href="./homepage.html">homepage</a>.</p>
+      </body>`;
   }
   
