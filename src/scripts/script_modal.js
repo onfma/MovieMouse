@@ -7,7 +7,12 @@ async function fetchDatas() {
   const winnerImage = document.querySelector(".imgMare2 img");
   const openModal2 = document.querySelector(".text2");
   const description = document.querySelector(".text3");
-  const currentCategoryId = 2;
+
+  const response2 = await fetch('http://localhost:3000/getCat');
+  const data2 = await response2.json();
+  currentCategoryId = data2.id;
+  console.log(currentCategoryId);
+
   var winnerId;
   
   const apiKey = '9d086ab036170e8ab7e68ab954be6f58';

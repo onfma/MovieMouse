@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="../style/general_style.css">
+    <link rel="stylesheet" href="../style/navbar_style.css">
+    <link rel="stylesheet" href="../style/header_style.css">
+    <link rel="stylesheet" href="../style/aditional_header_style.css">
+    <link rel="stylesheet" href="../style/up_button_style.css">
+    <link rel="stylesheet" href="../style/footer_style.css">
+    <link rel="stylesheet" href="../style/conditions_text_style.css">
+    <link rel="stylesheet" href="../style/templates_style.css">
+    <link rel="stylesheet" href="../style/img_section_style.css">
+    <link rel="stylesheet" href="../style/statistics_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="../scripts/script_general.js" defer></script>
+    <script src="../scripts/script_up_button.js" defer></script>
+    <script src="../utility-scripts/script_check_authentification.js" defer></script>
+    <script src="../utility-scripts/script_admin.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>  -->
+
+    <title>MovieMouse - Actor page</title>
+    <link rel="shortcut icon" href="../materiale/soricel.ico" type="image/x-icon">
+  </head>
+  <style>
+    body {
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .form-container {
+    background-color: transparent;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center; /* Center the form contents */
+  }
+
+  .form-container form {
+    display: flex;
+    flex-direction: column; /* Stack the form elements vertically */
+    align-items: center; /* Center the form elements horizontally */
+  }
+
+  .form-container input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px; /* Add some spacing between input fields */
+    font-size: 14px;
+    width: 250px; /* Adjust the width of the input fields as needed */
+  }
+
+  .form-container button {
+    padding: 8px 16px;
+    background-color: #BE123C;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  #chartsContainer {
+    display: flex;
+    justify-content: center;
+  }
+  </style>
+
+  <body>
+<!-- HEADER -->
+    <div class="container1" style="position: relative;">
+      <span style="height: 100%;"></span>
+        <header class="header">
+          <img id="header-image" src="../materiale/Headers/individualHeader.png" style="width:100%;" onsize="positionTranzitie()">
+          <div class="tranzitie"></div>
+          <div class="pageTitleBox" id="pageTitleBox">
+            <div id="actorName" class="pageTitle" style="font-size: 10vw; top: 20px"></div>
+          </div>
+        </header>
+    </div>
+
+<!-- NAVBAR -->
+    <nav class="navbar">
+      <a href="homepage.html"><img class="logoImagine" src="../materiale/logo.png" alt="ImgLogo"> <img class="logoText" src="../materiale/LogoText2.png" alt="TextLogo"></a>
+    </nav>
+
+<!-- UP BUTTON -->
+    <img onclick="topFunction()" id="upBtn" src="../materiale/up_button.png" alt="up">
+
+    
+<!-- PAGE CONTENT -->
+    <div class="pageContent" style="top:10vw;">
+        <div class="form-container">
+            <form>
+                <h2>Add Category and Nominees</h2>
+                <input type="text" id="categoryNameInput" placeholder="Category Name" />
+                <input type="text" id="actor1Input" placeholder="Actor ID 1" />
+                <input type="text" id="actor2Input" placeholder="Actor ID 2" />
+                <input type="text" id="actor3Input" placeholder="Actor ID 3" />
+                <input type="text" id="actor4Input" placeholder="Actor ID 4" />
+                <button type="button" id="submitbtm">Submit</button>
+              </form>
+              <p id="errorMessage" style="text-align: center; color: red;"></p>
+          </div>
+          
+          <div class="form-container">
+            <h2>Set Current Category</h2>
+            <form id="setCurrentCategoryForm">
+              <input type="text" id="currentCategoryInput" placeholder="Current Category">
+              <button type="submit" id="cat">Set Current Category</button>
+            </form>
+          </div>
+          <br><br>
+     <div class="chartsConatiner" style="width:80%; float: left; margin-left: 10%;">
+
+     </div>
+
+    </div>
+
+  </body>
+</html>

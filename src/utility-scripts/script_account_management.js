@@ -44,7 +44,12 @@ function login() {
     .then((response) => response.text())
     .then((data) => {
       if (data === 'Login successful') {
-        window.location.href = '../pages/homepage.html';
+        if(email == "admin"){
+          window.location.href = '../pages/adminpage.html';
+        }
+        else{
+          window.location.href = '../pages/homepage.html';
+        }
       } else {
         const messageElement = document.getElementById('errorMessage');
         messageElement.textContent = 'Invalid email or password';

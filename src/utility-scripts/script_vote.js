@@ -13,7 +13,11 @@ const loadVoteModule = async () => {
     const mainCategory = document.querySelector("#mainCategory");
   
     const apiKey = '9d086ab036170e8ab7e68ab954be6f58';
-    const currentCategoryId = 2;
+    
+    const response2 = await fetch('http://localhost:3000/getCat');
+    const data2 = await response2.json();
+    currentCategoryId = data2.id;
+    console.log(currentCategoryId);
     const nomineesArray = [];
   
     const apiUrl = `http://localhost:3000/categoryName/${currentCategoryId}`;
@@ -28,6 +32,7 @@ const loadVoteModule = async () => {
     const responseNominees = await fetch(apiUrlNominees);
     const dataNominees = await responseNominees.json();
     nomineesArray.push(dataNominees.nominees);
+    console.log(nomineesArray);
   
     const imageColumns = document.querySelectorAll('#canditati .image_column');
   
@@ -67,7 +72,7 @@ const loadVoteModule = async () => {
     });
   
     const voteFor = function (index) {
-      actorId = nomineesArray[index];
+      actorId = nomineesArray[0][index];
       console.log(actorId);
       fetch(`http://localhost:3000/voteFor/${actorId}`, {
         method: 'POST',
