@@ -55,6 +55,7 @@ window.addEventListener("DOMContentLoaded", async function () {
     headShot.alt = personData.name;
 
     const images = document.querySelectorAll('.image_column img');
+    const linkList = document.querySelectorAll('.pageContent_imgSection .link');
 
     const shuffledFeatures = mostPopularFeatures.sort(() => 0.5 - Math.random());
     const randomFeatures = shuffledFeatures.slice(0, 4);
@@ -62,16 +63,40 @@ window.addEventListener("DOMContentLoaded", async function () {
       const image = images[i];
       const captionTitle = image.nextElementSibling;
       const captionText = captionTitle.nextElementSibling;
+      const linkElement = linkList[i];
     
       if (randomFeatures.length > i) {
         const feature = randomFeatures[i];
         const posterPath = feature.poster_path;
         let title;
+        let tmdbRedirectURL;
         if (feature.media_type === "movie") {
           title = feature.title;
-        } else if (feature.media_type === "tv") {
+          tmdbRedirectURL = `https://www.themoviedb.org/movie/${feature.id}`;
+          linkElement.href = `./templateMoviepage.html?search=${encodeURIComponent(feature.title)}`;
+        } 
+        else if (feature.media_type === "tv") {
           title = feature.name;
+          tmdbRedirectURL = `https://www.themoviedb.org/tv/${feature.id}`;
+          linkElement.href = `./templateTVshowpage.html?search=${encodeURIComponent(feature.name)}`;
         }
+
+        // Handle link click event
+        linkElement.onclick = (event) => {
+          event.preventDefault(); // Prevent the default link behavior
+          const url = linkElement.href;
+
+          testLinkValidity(url)
+            .then((valid) => {
+              if (valid) {
+                window.location.href = tmdbRedirectURL;
+              } else {
+                window.location.href = linkElement.href;
+              }
+            });
+        };
+
+
         const description = feature.overview;
     
         image.src = `https://image.tmdb.org/t/p/w500${posterPath}`;
@@ -265,3 +290,20 @@ window.addEventListener("DOMContentLoaded", async function () {
   });
 });
 
+function testLinkValidity(url) {
+  return fetch(url, { method: 'HEAD' })
+    .then(response => {
+      if (response.ok) {
+        // Link is valid
+        return true;
+      } else {
+        // Link is not valid
+        return false;
+      }
+    })
+    .catch(error => {
+      // An error occurred, link is not valid
+      console.error('Error:', error);
+      return false;
+    });
+}
