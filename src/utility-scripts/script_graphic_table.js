@@ -98,17 +98,16 @@ const fetchData = async () => {
         nextButton.id = 'nextPageBtn';
         nextButton.textContent = '>';
 
-        const downloadButton = document.createElement('button');
-        downloadButton.id = 'downloadCSV';
-        downloadButton.textContent = 'Download CSV';
-
         paginationContainer.appendChild(prevButton);
         paginationContainer.appendChild(currentPageSpan);
         paginationContainer.appendChild(nextButton);
-        paginationContainer.appendChild(downloadButton);
+        
+
         const newPrevPageBtn = document.getElementById('prevPageBtn');
         const newNextPageBtn = document.getElementById('nextPageBtn');
-        const downloadBtn = document.getElementById("downloadCSV");
+        const downloadBtn_CVS_table = document.getElementById("downloadCSV_table");
+        const downloadBtn_WebP_table = document.getElementById("downloadWebP_table");
+        const downloadBtn_SVG_table = document.getElementById("downloadSVG_table");
   
         newPrevPageBtn.disabled = currentPage === 1;
         newNextPageBtn.disabled = currentPage === totalPages;
@@ -129,7 +128,7 @@ const fetchData = async () => {
           updatePageCounter();
         });
 
-        downloadBtn.addEventListener('click', () => {
+        downloadBtn_CVS_table.addEventListener('click', () => {
           const categoryFilterValue = document.getElementById('categoryFilter').value;
           const fullNameFilterValue = document.getElementById('fullNameFilter').value;
           const yearFilterValue = document.getElementById('yearFilter').value;
@@ -146,6 +145,116 @@ const fetchData = async () => {
           const csvContent = convertToCSV(filteredData);
           downloadCSV("SAG-data.csv", csvContent);
         });
+
+        // downloadBtn_WebP_table.addEventListener('click', () => {
+        //   const categoryFilterValue = document.getElementById('categoryFilter').value;
+        //   const fullNameFilterValue = document.getElementById('fullNameFilter').value;
+        //   const yearFilterValue = document.getElementById('yearFilter').value;
+        //   const showFilterValue = document.getElementById('showFilter').value;
+        
+        //   const filteredData = data.filter(rowData => {
+        //     const categoryMatches = (categoryFilterValue === '') || (rowData.category && (rowData.category.toLowerCase().includes(categoryFilterValue.toLowerCase()) || rowData.category.toLowerCase() === categoryFilterValue.toLowerCase()));
+        //     const fullNameMatches = (fullNameFilterValue === '') || rowData.full_name && (rowData.full_name.toLowerCase().includes(fullNameFilterValue.toLowerCase()) || rowData.full_name.toLowerCase() === fullNameFilterValue.toLowerCase());
+        //     const yearMatches = (yearFilterValue === '') || rowData.year && (rowData.year.toLowerCase().includes(yearFilterValue.toLowerCase()) || rowData.year.toLowerCase() === yearFilterValue.toLowerCase());
+        //     const showMatches = (showFilterValue === '') || rowData.show && (rowData.show.toLowerCase().includes(showFilterValue.toLowerCase()) || rowData.show.toLowerCase() === showFilterValue.toLowerCase());
+        
+        //     return categoryMatches && fullNameMatches && yearMatches && showMatches;
+        //   });
+        
+        //   // Generate WebP file content
+        //   const webpContent = generateWebPContent(filteredData);
+        
+        //   // Create a Blob from the WebP content
+        //   const blob = new Blob([webpContent], { type: 'image/webp' });
+        
+        //   // Create a temporary link element to initiate the download
+        //   const linkElement = document.createElement('a');
+        //   linkElement.href = URL.createObjectURL(blob);
+        //   linkElement.download = 'data.webp';
+        
+        //   // Programmatically click the link to start the download
+        //   linkElement.click();
+        
+        //   // Clean up the temporary URL object
+        //   URL.revokeObjectURL(linkElement.href);
+        // });
+
+        downloadBtn_SVG_table.addEventListener('click', () => {
+          const categoryFilterValue = document.getElementById('categoryFilter').value;
+          const fullNameFilterValue = document.getElementById('fullNameFilter').value;
+          const yearFilterValue = document.getElementById('yearFilter').value;
+          const showFilterValue = document.getElementById('showFilter').value;
+        
+          const filteredData = data.filter(rowData => {
+            const categoryMatches = (categoryFilterValue === '') || (rowData.category && (rowData.category.toLowerCase().includes(categoryFilterValue.toLowerCase()) || rowData.category.toLowerCase() === categoryFilterValue.toLowerCase()));
+            const fullNameMatches = (fullNameFilterValue === '') || rowData.full_name && (rowData.full_name.toLowerCase().includes(fullNameFilterValue.toLowerCase()) || rowData.full_name.toLowerCase() === fullNameFilterValue.toLowerCase());
+            const yearMatches = (yearFilterValue === '') || rowData.year && (rowData.year.toLowerCase().includes(yearFilterValue.toLowerCase()) || rowData.year.toLowerCase() === yearFilterValue.toLowerCase());
+            const showMatches = (showFilterValue === '') || rowData.show && (rowData.show.toLowerCase().includes(showFilterValue.toLowerCase()) || rowData.show.toLowerCase() === showFilterValue.toLowerCase());
+        
+            return categoryMatches && fullNameMatches && yearMatches && showMatches;
+          });
+        
+          const svgContent = convertToSVG(filteredData);
+          downloadSVG("SAG-data.svg", svgContent);
+        });
+        
+        const convertToSVG = (data) => {
+          const svgWidth = 800; // Adjust the SVG width according to your needs
+          const svgHeight = 400; // Adjust the SVG height according to your needs
+        
+          const maxNomineeCount = Math.max(...data.map(row => row.Nominee_Count));
+        
+          // Calculate the width scale for the bars
+          const widthScale = svgWidth / maxNomineeCount;
+        
+          const svgNS = "http://www.w3.org/2000/svg";
+          const svgElem = document.createElementNS(svgNS, "svg");
+          svgElem.setAttribute("xmlns", svgNS);
+          svgElem.setAttribute("width", svgWidth);
+          svgElem.setAttribute("height", svgHeight);
+        
+          data.forEach((row, index) => {
+            const rectElem = document.createElementNS(svgNS, "rect");
+            rectElem.setAttribute("x", 0);
+            rectElem.setAttribute("y", index * 40);
+            rectElem.setAttribute("width", row.Nominee_Count * widthScale);
+            rectElem.setAttribute("height", 30);
+            rectElem.setAttribute("fill", "blue");
+        
+            svgElem.appendChild(rectElem);
+        
+            const textElem = document.createElementNS(svgNS, "text");
+            textElem.setAttribute("x", 10);
+            textElem.setAttribute("y", index * 40 + 20);
+            textElem.setAttribute("fill", "white");
+            textElem.textContent = row.Category;
+        
+            svgElem.appendChild(textElem);
+          });
+        
+          const serializer = new XMLSerializer();
+          const svgString = serializer.serializeToString(svgElem);
+        
+          const svgContent = `<?xml version="1.0" standalone="no"?>
+            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+              "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+            ${svgString}`;
+        
+          return svgContent;
+        };
+        
+        
+        
+        const downloadSVG = (filename, content) => {
+          const element = document.createElement('a');
+          element.setAttribute('href', 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(content));
+          element.setAttribute('download', filename);
+          element.style.display = 'none';
+          document.body.appendChild(element);
+          element.click();
+          document.body.removeChild(element);
+        };
+        
   
         updatePageCounter();
       };

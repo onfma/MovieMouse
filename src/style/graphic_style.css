@@ -186,3 +186,8 @@
 
     color: #000000;
 }
+
+.downloadButton{
+  width: auto;
+  font-family: font1;
+}
