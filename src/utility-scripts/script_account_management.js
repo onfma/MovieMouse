@@ -44,7 +44,7 @@ function login() {
     .then((response) => response.text())
     .then((data) => {
       if (data === 'Login successful') {
-        if(email == "admin"){
+        if(email == "admin@email.com"){
           window.location.href = '../pages/adminpage.html';
         }
         else{

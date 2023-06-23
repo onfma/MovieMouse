@@ -127,36 +127,79 @@ app.post('/voteFor/:actorId', (req, res) => {
   });
 });
 
-app.post('/addCategory/:categoryName', (req, res) => {
-  const categoryName = req.params.categoryName;
 
-  db.run('INSERT INTO categories (categoryName) VALUES (?)', [categoryName], function(err) {
+app.post('/addNomination', (req, res) => {
+  const { idActor, idCategory } = req.body;
+
+  db.get('SELECT * FROM nominations WHERE idActor = ? AND idCategory = ?', [idActor, idCategory], (err, row) => {
     if (err) {
-      console.error('Error adding category:', err);
-      res.status(500).json({ error: 'Internal Server Error' });
+      console.error('Error querying nominations:', err);
+      res.status(500).send('Internal Server Error');
       return;
     }
-
-    // Category added successfully
-    res.status(200).json({ message: 'Category added successfully' });
+    if (row) {
+      console.error('Error inserting category');
+      res.status(400).send('Error inserting category');
+      return;
+    }
+    db.run('INSERT INTO nominations (idActor, idCategory) VALUES (?, ?)', [idActor, idCategory], function (err) {
+      if (err) {
+        console.error('Error inserting nominations', err);
+        res.status(500).send('Error inserting nominations');
+        return;
+      }
+      console.log('Category inserted successfully');
+      res.send('Category inserted successfully');
+    });
   });
 });
 
-app.post('/addNomination/:categoryId/:actorId', (req, res) => {
-  const categoryId = req.params.categoryId;
-  const actorId = req.params.actorId;
-  console.log(categoryId, actorId);
+app.post('/addCategory', (req, res) => {
+  const { categoryName } = req.body;
 
-  db.run('INSERT INTO nominations (categoryId, actorId) VALUES (?, ?)', [categoryId, actorId], function(err) {
+  db.get('SELECT * FROM categories WHERE categoryName = ?', [categoryName], (err, row) => {
     if (err) {
-      console.error('Error adding nomination:', err);
-      res.status(500).json({ error: 'Internal Server Error' });
+      console.error('Error querying categories:', err);
+      res.status(500).send('Internal Server Error');
+      return;
+    }
+    if (row) {
+      console.error('Error inserting category');
+      res.status(400).send('Error inserting category');
       return;
     }
 
-    res.sendStatus(200);
+    db.run('INSERT INTO categories (categoryName) VALUES (?)', [categoryName], function (err) {
+      if (err) {
+        console.error('Error inserting category', err);
+        res.status(500).send('Error inserting category');
+        return;
+      }
+      console.log('Category inserted successfully');
+      res.send('Category inserted successfully');
+    });
   });
 });
+
+app.get('/getCat', (req, res) => {
+  console.log(currentCategoryId.set, currentCategoryId.id);
+  res.json({ 
+    set: currentCategoryId.set,
+    id: currentCategoryId.id
+   });
+});
+
+app.post('/setCat', (req, res) => {
+  const { categoryId } = req.body;
+  const id = parseInt(categoryId, 10); 
+  
+  currentCategoryId.set = true;
+  currentCategoryId.id = id;
+  console.log(currentCategoryId.set, currentCategoryId.id);
+  
+  res.sendStatus(200);
+});
+
 
 app.get('/getVotes', (req, res) => {
   if (!session.authenticated) {
@@ -287,7 +330,6 @@ app.get('/categoryName/:categoryId', (req, res) => {
     }
   });
 });
-
 app.get('/categoryId/:categoryName', (req, res) => {
   const categoryName = req.params.categoryName;
 
@@ -306,21 +348,15 @@ app.get('/categoryId/:categoryName', (req, res) => {
     }
   });
 });
-app.get('/getCat', (req, res) => {
-  res.json({ 
-    set: currentCategoryId.set,
-    id: currentCategoryId.id
-   });
-});
-app.get('/setCat/:id', (req, res) => {
-  const id = req.params.id;
-    currentCategoryId.set = true;
-    currentCategoryId.id = id;
-});
+
+
 
 app.get('/check-authentication', (req, res) => {
   if (session.authenticated) {
-    res.json({ authenticated: true });
+    res.json({ 
+      authenticated: true,
+      username: session.username
+   });
   } else {
     res.json({ authenticated: false });
   }
@@ -392,6 +428,8 @@ app.post('/add-account', (req, res) => {
     });
   });
 });
+
+
 
 app.post('/login', (req, res) => {
   const { email, password } = req.body;

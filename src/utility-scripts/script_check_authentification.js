@@ -1,10 +1,10 @@
 window.addEventListener("DOMContentLoaded", async function () {
     const data = await checkAuthentication();
     const isAuthenticated = data.authenticated;
-    const username = data.userName;
-    //if(username != 'admin' && (window.location.pathname.includes('adminpage.html'))){
-     //   displayAdminfailMessage();
-    //}
+    const username = data.username;
+    if(username != "admin" && (window.location.pathname.includes('adminpage.html'))){
+        displayAdminfailMessage();
+    }
     if (!isAuthenticated && !(window.location.pathname.includes('loginpage.html') || window.location.pathname.includes('createaccountpage.html'))) {
         displayNotLoggedInMessage();
     }

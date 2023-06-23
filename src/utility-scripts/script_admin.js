@@ -109,20 +109,39 @@ fetch(apiUrl)
     }
   
     try {
-      const categoryResponse = await fetch(`http://localhost:3000/addCategory/${categoryName}`);
+      const postData = { categoryName };
+      const addCategoryResponse = await fetch('http://localhost:3000/addCategory', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(postData),
+      });
+      const addCategoryData = await addCategoryResponse.text();
+      console.log(addCategoryData);
+  
       const categoryIdResponse = await fetch(`http://localhost:3000/categoryId/${categoryName}`);
-      const f = await categoryIdResponse.json();
-      categoryId = f.categoryId;
+      const categoryIdData = await categoryIdResponse.json();
+      const categoryId = categoryIdData.categoryId;
       console.log(categoryId);
   
-      const addNominationPromises = [
-        fetch(`http://localhost:3000/addNomination/${categoryId}/${actor1Id}`),
-        fetch(`http://localhost:3000/addNomination/${categoryId}/${actor2Id}`),
-        fetch(`http://localhost:3000/addNomination/${categoryId}/${actor3Id}`),
-        fetch(`http://localhost:3000/addNomination/${categoryId}/${actor4Id}`)
-      ];
+      const addNomination = async (actorId) => {
+        const insertData = { actorId, categoryId };
+        const addNominationResponse = await fetch('http://localhost:3000/addNomination', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(insertData),
+        });
+        const addNominationData = await addNominationResponse.text();
+        console.log(addNominationData);
+      };
   
-      const addNominationResponses = await Promise.all(addNominationPromises);
+      await addNomination(actor1Id);
+      await addNomination(actor2Id);
+      await addNomination(actor3Id);
+      await addNomination(actor4Id);
   
       document.getElementById('categoryNameInput').value = '';
       document.getElementById('actor1Input').value = '';
@@ -136,11 +155,26 @@ fetch(apiUrl)
       message.textContent = 'An error occurred. Please try again later.';
     }
   };
+  
+  const setCurrentCategoryForm = document.getElementById('setCurrentCategoryForm');
+setCurrentCategoryForm.addEventListener('submit', (event) => {
+  event.preventDefault();
 
-  const cat = document.getElementById('cat');
-  cat.onclick = async () => {
-    console.log("categoryId");
-    const currentCategory = document.getElementById('currentCategoryInput').value;
-    const f = await fetch(`http://localhost:3000/addNomination/setCat/${currentCategory}`);
-  };
+  const categoryIdInput = document.getElementById('currentCategoryInput').value;
+  const categoryId = parseInt(categoryIdInput); 
+
+  console.log(categoryId);
+  
+    const insertData = { categoryId };
+    console.log(insertData);
+  
+    fetch('http://localhost:3000/setCat', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(insertData),
+    });
+    document.getElementById('currentCategoryInput').value = "";
+  });
   
