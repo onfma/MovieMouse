@@ -81,7 +81,6 @@ db.run(`
     console.error('Error creating "accounts" table:', err);
     return;
   }
-  console.log('"accounts" table created successfully');
 });
 
 db.run(`
@@ -94,7 +93,6 @@ db.run(`
     console.error('Error creating "categories" table:', err);
     return;
   }
-  console.log('"categories" table created successfully');
 });
 
 db.run(`
@@ -110,7 +108,6 @@ db.run(`
     console.error('Error creating "nominations" table:', err);
     return;
   }
-  console.log('"nominations" table created successfully');
 });
 
 db.run(`
@@ -129,7 +126,6 @@ db.run(`
     console.error('Error creating "votes" table:', err);
     return;
   }
-  console.log('"votes" table created successfully');
 });
 
 app.post('/voteFor/:actorId', (req, res) => {
@@ -215,7 +211,6 @@ app.post('/addCategory', (req, res) => {
 });
 
 app.get('/getCat', (req, res) => {
-  console.log(currentCategoryId.set, currentCategoryId.id);
   res.json({ 
     set: currentCategoryId.set,
     id: currentCategoryId.id
@@ -228,7 +223,6 @@ app.post('/setCat', (req, res) => {
   
   currentCategoryId.set = true;
   currentCategoryId.id = id;
-  console.log(currentCategoryId.set, currentCategoryId.id);
   
   res.sendStatus(200);
 });
