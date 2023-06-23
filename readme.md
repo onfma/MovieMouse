@@ -8,7 +8,7 @@ _Design initial:_ https://www.figma.com/file/fzqeBTPCYt9GxMdl8JBckT/MovieMouse?t
 
 ## How to run
 
-In order to run the programm, first download the repo. In the terminal run _cd src_ in the MovieMouse directory, then _node app.js_. To have acces on out platform, open on your prefered browser _/src/pages/login.html_. 
+In order to run the programm, first download the repo. In the terminal run _cd src_ in the MovieMouse directory, then _node app.js_. To have acces on out platform, open on your prefered browser _http://localhost:3000/loginpage.html_. 
 
 Enjoy!
 
