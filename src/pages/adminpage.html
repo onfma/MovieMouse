@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,58 +25,60 @@
 
     <title>MovieMouse - Actor page</title>
     <link rel="shortcut icon" href="../materiale/soricel.ico" type="image/x-icon">
-  </head>
-  <style>
-    body {
-      justify-content: center;
-      align-items: center;
+
+    <style>
+      body {
+        justify-content: center;
+        align-items: center;
+      }
+    
+      .form-container {
+      background-color: transparent;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      text-align: center; 
     }
   
-    .form-container {
-    background-color: transparent;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    text-align: center; 
-  }
-
-  .form-container form {
-    display: flex;
-    flex-direction: column; 
-    align-items: center; 
-  }
-
-  .form-container input[type="text"] {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-bottom: 10px; 
-    font-size: 14px;
-    width: 250px; 
-  }
-
-  .form-container button {
-    padding: 8px 16px;
-    background-color: #BE123C;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    font-size: 14px;
-    cursor: pointer;
-  }
-
-  #chartsContainer {
-    display: flex;
-    justify-content: center;
-  }
-  </style>
+    .form-container form {
+      display: flex;
+      flex-direction: column; 
+      align-items: center; 
+    }
+  
+    .form-container input[type="text"] {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-bottom: 10px; 
+      font-size: 14px;
+      width: 250px; 
+    }
+  
+    .form-container button {
+      padding: 8px 16px;
+      background-color: #BE123C;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+  
+    #chartsContainer {
+      display: flex;
+      justify-content: center;
+    }
+    </style>
+  </head>
+  
 
   <body>
 <!-- HEADER -->
     <div class="container1" style="position: relative;">
       <span style="height: 100%;"></span>
         <header class="header">
-          <img id="header-image" src="../materiale/Headers/individualHeader.png" style="width:100%;" onsize="positionTranzitie()">
+          <img id="header-image" alt="ceva" src="../materiale/Headers/individualHeader.png" style="width:100%;" onsize="positionTranzitie()">
           <div class="tranzitie"></div>
           <div class="pageTitleBox" id="pageTitleBox">
             <div id="actorName" class="pageTitle" style="font-size: 10vw; top: 20px"></div>
@@ -98,11 +100,11 @@
         <div class="form-container">
             <form>
                 <h2>Add Category and Nominees</h2>
-                <input type="text" id="categoryNameInput" placeholder="Category Name" />
-                <input type="text" id="actor1Input" placeholder="Actor ID 1" />
-                <input type="text" id="actor2Input" placeholder="Actor ID 2" />
-                <input type="text" id="actor3Input" placeholder="Actor ID 3" />
-                <input type="text" id="actor4Input" placeholder="Actor ID 4" />
+                <input type="text" id="categoryNameInput" placeholder="Category Name" >
+                <input type="text" id="actor1Input" placeholder="Actor ID 1" >
+                <input type="text" id="actor2Input" placeholder="Actor ID 2" >
+                <input type="text" id="actor3Input" placeholder="Actor ID 3" >
+                <input type="text" id="actor4Input" placeholder="Actor ID 4" >
                 <button type="button" id="submitbtm">Submit</button>
               </form>
               <p id="errorMessage" style="text-align: center; color: red;"></p>
