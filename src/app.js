@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const path1 = require('path');
 const sqlite3 = require('sqlite3').verbose();
 const cookieParser = require("cookie-parser");
 const ses = require('express-session');
@@ -13,9 +14,41 @@ const app = express();
 const port = 3000;
 const oneDay = 1000 * 60 * 60 * 24;
 
+var folderPath = './style';
+app.use('/style', express.static(folderPath));
+
+
+var folderPath = './tmdb-api';
+app.use('/tmdb-api', express.static(folderPath));
+
+
+var folderPath = './sag-api';
+app.use('/sag-api', express.static(folderPath));
+
+var folderPath = './scripts';
+app.use('/scripts', express.static(folderPath));
+
+var folderPath = './pages';
+app.use('/pages', express.static(folderPath));
+
+var folderPath = './utility-scripts';
+app.use('/utility-scripts', express.static(folderPath));
+
+
+var folderPath = './materiale';
+app.use('/materiale', express.static(folderPath));
+
+
+var folderPath = './gnews-api';
+app.use('/gnews-api', express.static(folderPath));
+
+
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, './sag-api/data')));
+
+
+app.use(express.static(path1.join(__dirname, './pages')));
 app.use(cookieParser());
 app.use(ses({
   secret: 'Fezulina-e-DrAgUt2256',
@@ -377,6 +410,11 @@ app.get('/get-user', (req, res) => {
 
 app.get('/screen_actor_guild_awards.csv', (req, res) => {
   const filePath = path.join(__dirname, 'data', 'screen_actor_guild_awards.csv');
+  res.sendFile(filePath);
+});
+
+app.get('/loginpage.html', (req, res) => {
+  const filePath = path1.join(__dirname, 'data', 'loginpage.html');
   res.sendFile(filePath);
 });
 
